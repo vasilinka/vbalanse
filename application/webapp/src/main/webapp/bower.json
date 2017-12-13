@@ -1,0 +1,66 @@
+{
+  "name": "vbalanse-angular",
+  "version": "1.0.0",
+  "main": "assets/app.css",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "latest",
+    "angular-ui-select": "latest",
+    "angular": "latest",
+    "angular-sanitize": "latest",
+    "angular-route": "latest",
+    "angular-cookies": "latest",
+    "angular-resource": "latest",
+    "angular-animate": "latest",
+    "angular-ui-bootstrap": "latest",
+    "angular-smart-table": "latest",
+    "angular-elastic": "latest",
+    "angular-xeditable": "latest",
+    "ng-grid": "2.0.14",
+    "ng-tags-input": "latest",
+    "selectize": "~0.11.2",
+    "select2": "~3.5.2",
+    "elastic-columns":"latest",
+    "components-font-awesome":"latest",
+    "spin.js": "2.0.0",
+    "gmaps":"latest",
+    "jquery": "latest",
+    "jquery-autogrow": "latest",
+    "jquery-file-upload": "latest",
+    "jquery-waypoints": "latest",
+    "jquery-validate": "latest",
+    "jquery-ui": "latest",
+    "isotope": "latest",
+    "handlebars": "latest",
+    "jquery-form": "latest",
+    "jquery-template": "latest",
+    "cropper": "latest",
+    "bootstrap": "latest",
+    "bootstrap-tagsinput" : "latest",
+    "x-editable" : "latest",
+    "bxslider-4" : "latest",
+    "typeahead.js" : "latest",
+    "bootstrap-select": "latest",
+    "ui-select": "latest",
+    "magnific-popup": "latest"
+
+    
+  },
+   "resolutions": {
+  "angular": "~1.6.7",
+  "select2": "~3.x.x"
+},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "exportsOverride": {
+    "angular-ui-bootstrap": {
+      "js": "src/**/*.js"
+    }
+  }
+}
