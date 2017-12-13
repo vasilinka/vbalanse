@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2008, Itision Corporation. All Rights Reserved.
+  ~
+  ~ The content of this file is copyrighted by Itision Corporation and can not be
+  ~ reproduced, distributed, altered or used in any form, in whole or in part.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>by.vbalanse.server</groupId>
+    <artifactId>vbalanse-server.parent</artifactId>
+    <version>0.0.0.3-SNAPSHOT</version>
+  </parent>
+  <groupId>by.vbalanse.server</groupId>
+  <artifactId>vbalanse-server.application-transferer</artifactId>
+  <name>V balanse -Application (Transferer)</name>
+  <version>0.0.0.4-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <scm>
+    <connection>scm:svn:http://svn.vbalanse.by/application/trunk/transferer</connection>
+    <developerConnection>scm:svn:http://svn.vbalanse.by/application/trunk/transferer</developerConnection>
+    <url>http://svn.vbalanse.by/application/trunk/transferer</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>by.vbalanse.server</groupId>
+      <artifactId>vbalanse-server.application-facade</artifactId>
+      <version>0.0.0.4-SNAPSHOT</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>by.vbalanse.server</groupId>
+      <artifactId>vbalanse-server.application-gwt-portal-user-rpc</artifactId>
+      <version>0.0.0.4-SNAPSHOT</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+    </dependency>
+  </dependencies>
+</project>
+

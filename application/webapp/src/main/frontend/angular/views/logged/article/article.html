@@ -1,0 +1,109 @@
+<div id="upload" class="main_content" style="height: 100%;" loaddirective>
+  <div ng-include="'angular/views/logged/logged-menu.html'"/>
+
+
+  <div class="article-edit vb-center-block-full">
+    <form id="articleForm">
+      <h2>{{actionTitle}}</h2>
+
+      <div class="form-group">
+        <vb-form-input field-name="title" field-title="Заголовок" ng-model="article.title"/>
+      </div>
+
+      <div class="form-group droppable">
+        <label for="text" class="control-label">Картинка для статьи</label>
+        <label for="text" class="error" style="display: none;">Пожалуйста, задайте картинку для статьи</label>
+
+        <div class="dropZone" style="position:relative;">
+          <input id="inputUploadFiles" multiple="multiple" type="file" name="photoApp" style="height: 0px !important;">
+          <img id="drag-image" src="{{toBoolean(article.image.url)?article.image.url:''}}" event-directive call-function="addNoImageStyle()"/>
+
+          <div class="upload">
+            <div class="upload-div">
+
+              <h1 class="logo">Задайте <span>картинку</span></h1>
+
+              <h2 class="upload__instructions">Выберите картинку для статьи <br>Кликните здесь или перетащите сюда</h2>
+
+              <div class="upload__icon">
+                <div id="wrapIconLogo">
+                  <div id="iconUpload">
+                    <div id="percentLoading"><span id="percentage">0</span><span id="percent">%</span></div>
+                    <div id="iconUploadLoading"></div>
+                    <div id="iconUploadDefault"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--<div id="drop-area">
+      <div id="drop">
+        Drop Here
+
+        <a>Browse</a>
+        <input type="file" name="upl" multiple />
+      </div>
+
+      <ul>
+        &lt;!&ndash; The file uploads will be shown here &ndash;&gt;
+      </ul>
+      </div>-->
+
+      <!--
+              </div>
+              <div style="width:100%;height:100px;" id="drag-image"></div>
+            </div>
+      -->
+
+      <div class="form-group">
+        <label for="content" class="control-label">Раздел</label>
+        <label for="department" class="error" style="display: none;">Поле обязательное.</label>
+
+        <div class="btn-group">
+          <ui-select ng-model="article.department.id" id="department" name="department" theme="select2"
+                     ng-disabled="disabled"
+                     style="min-width: 300px;">
+            <ui-select-match placeholder="Выберите раздел для статьи...">{{$select.selected.title}}
+            </ui-select-match>
+            <ui-select-choices
+                repeat="department.id as department in departments | propsFilter: {title: $select.search}">
+              <div ng-bind-html="department.title | highlight: $select.search"></div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tags" class="control-label">Теги</label>
+        <label for="tags" class="error" style="display: none;">Поле обязательное.</label>
+
+        <ui-select multiple ng-model="article.tags"
+                   theme="bootstrap"
+                   style="width: 300px;" tagging-label="false" name="tags" id="tags" reset-search-input="true"
+                   tagging="createTag">
+          <ui-select-match placeholder="Enter a tag...">{{$item.title}}</ui-select-match>
+          <ui-select-choices repeat="tag in tags"
+                             refresh="refreshTags($select.search)"
+                             refresh-delay="0">
+            <div ng-bind-html="tag.title | highlight: $select.search"></div>
+          </ui-select-choices>
+        </ui-select>
+      </div>
+      <!--<p>Selected: {{address.selected.formatted_address}}</p>-->
+      <!--<p>Selected: {{selectedTags}}</p>-->
+
+      <div class="form-group">
+        <label for="text" class="control-label">Текст</label>
+        <label for="text" class="error" style="display: none;">Поле обязательное.</label>
+        <textarea id="content" class="ck-editor" ng-model="article.text" name="text" id="text"></textarea>
+      </div>
+      <div class="btn-group pull-right">
+        <button class="btn btn-primary" data-ng-click="saveArticle()">Сохранить</button>
+      </div>
+    </form>
+  </div>
+</div>

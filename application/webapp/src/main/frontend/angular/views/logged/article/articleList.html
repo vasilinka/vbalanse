@@ -1,0 +1,63 @@
+<div class="main_content" style="height: 100%;" loaddirective>
+    <div ng-include="'angular/views/logged/logged-menu.html'"/>
+    <div ng-include="'angular/views/logged/right-block.html'"/>
+
+
+
+    <div class="article-edit" style=" margin-left: 140px;margin-right: 310px;">
+            <h2>Список моих статей</h2>
+
+        <div>
+            <table st-table="displayedCollection" st-safe-src="articles.list" class="table table-striped">
+                <thead>
+                <tr>
+                    <th st-sort="title"><span class="sort-field">название</span></th>
+                    <th st-sort="dateOfPublish"><span class="sort-field">Дата публикации</span></th>
+                </tr>
+                <tr>
+                    <th>
+                        <input st-search="'title'" placeholder="search for title" class="input-sm form-control" type="search"/>
+                    </th>
+                    <!--<th colspan="2">
+                        <input st-search placeholder="global search" class="input-sm form-control" type="search"/>
+                    </th>
+                    <th>
+                        <input st-search="selectedPredicate" placeholder="bound predicate" class="input-sm form-control" type="search"/>
+                    </th>-->
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="article in displayedCollection">
+                    <td><a ng-href="#/article?id={{article.id}}">{{article.title}}</a></td>
+                    <td>{{article.dateOfPublish | date:'MM/dd/yyyy'}}</td>
+                    <td>
+                        <button class="btn btn-sm" popover-placement="top" popover="{{row.email}}" type="button">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </button>
+                        <a ng-href="#/article?id={{article.id}}">Редактировать</a></td>
+                    <td>
+                        <button type="button" ng-click="removeRow(article)" class="btn btn-sm btn-danger">
+                            <i class="glyphicon glyphicon-remove-circle">
+                            </i>
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-if="displayedCollection.length == 0">
+                    <td colspan="4">
+                    <strong>У вас пока нет статей. Ждём с нетерпением вашей первую статью. <a href="#/article">Буду писать статью</a></strong>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!-- Binds the grid component to be displayed. -->
+          <!--  <div class="table" ng-grid="gridOptions"></div>
+
+            &lt;!&ndash;  Bind the pagination component to be displayed. &ndash;&gt;
+            <pagination direction-links="true" boundary-links="true"
+                        total-items="articles.totalResults" ng-model="articles.currentPage" items-per-page="articles.pageSize"
+                        on-select-page="refreshGrid(page)">
+            </pagination>-->
+        </div>
+    </div>
+</div>

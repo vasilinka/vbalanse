@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2008, Itision Corporation. All Rights Reserved.
+  ~
+  ~ The content of this file is copyrighted by Itision Corporation and can not be
+  ~ reproduced, distributed, altered or used in any form, in whole or in part.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>by.vbalanse.server</groupId>
+    <artifactId>vbalanse-server.parent</artifactId>
+    <version>0.0.0.3-SNAPSHOT</version>
+  </parent>
+  <groupId>by.vbalanse.server</groupId>
+  <artifactId>vbalanse-server.application-dao</artifactId>
+  <name>V balanse -Application (Data Access Objects)</name>
+  <version>0.0.0.4-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <scm>
+    <connection>scm:svn:http://svn.vbalanse.by/application/trunk/dao</connection>
+    <developerConnection>scm:svn:http://svn.vbalanse.by/application/trunk/dao</developerConnection>
+    <url>http://svn.vbalanse.by/application/trunk/dao</url>
+  </scm>
+  <dependencies>
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-ehcache</artifactId>
+    </dependency>
+    <dependency>
+      <!-- jsoup HTML parser library @ http://jsoup.org/ -->
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>1.7.3</version>
+    </dependency>
+
+    <dependency>
+      <groupId>by.vbalanse.server</groupId>
+      <artifactId>vbalanse-server.application-model</artifactId>
+      <version>0.0.0.4-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+    </dependency>
+      <dependency>
+          <groupId>org.springframework.security</groupId>
+          <artifactId>spring-security-core</artifactId>
+      </dependency>
+  </dependencies>
+</project>
+

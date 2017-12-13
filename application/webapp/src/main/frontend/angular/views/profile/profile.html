@@ -1,0 +1,322 @@
+<div class="main_content" style="height: 100%;" loaddirective>
+  <div ng-include="'angular/views/logged/logged-menu.html'"/>
+
+  <div id="wrapper" style="position: relative;margin-left:150px;">
+
+    <div>
+      <h2>Отредактируйте свою страницу</h2>
+    </div>
+
+    <div class="banner-wrapper">
+      <div style="height:300px;">
+        <div id="profile-avatar" class="profile-avatar" overlay overlay-div="overlay-avatar-div"
+             style="width:280px; height:280px; background: url({{toBoolean(psychologist.avatar.url)?psychologist.avatar.url:'icons/avatar-default.png'}});background-size: 280px 280px; ">
+          <div style="display: none;" id="overlay-avatar-div" class="overlay-{{position}} overlay-avatar">
+            <a class="overlay-title" magnific-popup close-on-bg-click="false" href="#test-form-div"
+               data-ng-click="initAvatar();">Загрузить
+              изображение</a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="banner" style="z-index: 999; " align="center">
+          <div data-ng-repeat="(key, item) in bannerTitles.fields">
+              <p ng-class="{'font-77': $index==0, 'font-47': $index==1}"><span><a href="#" psy class-name="UserInfoKeyValueEntity" field-name="{{key}}" el-id="{{item.id}}" class="username">{{item.value}}</a></span></p>
+          </div>
+<!--        <div><span class="font-77"><a href="#" id="{{bannerTitle1}}"></a></span></div>
+        <br>
+        <span class="font-47"><a href="#" id="{{bannerTitle2}}"></a> </span><br>
+
+        <p><a href="#" id="{{bannerTitle3}}"></a></p>-->
+
+          <!--
+          <div><span class="font-77"><a href="#" class="username" psy class-name="UserInfoKeyValueEntity" field-name="title" el-id="banner.id">{{bonus.description}}</a></span></div>
+          <br>
+          <span class="font-47"><a href="#" class="username" psy class-name="UserInfoKeyValueEntity" field-name="description" el-id="bonus.id">{{bonus.description}}</a> </span><br>
+
+          <p><a href="#" class="username" psy class-name="UserInfoKeyValueEntity" field-name="description" el-id="bonus.id">{{bonus.description}}</a></p>-->
+      </div>
+    </div>
+
+    <div class="department">
+      <h2>Мои бонусы</h2>
+      <span class="underline">&nbsp;</span>
+    </div>
+
+    <div id="list" elastic-columns-my style="position: relative;">
+
+      <div class="bonus-item" data-ng-repeat="bonus in bonuses">
+        <div class="one-column">
+          <div class="service-border">
+            <div change-icon attr-bonus-id="{{bonus.id}}" class="service-image-wrap" id="bonus_icon_holder{{$index}}">
+              <i class="{{toBoolean(bonus.iconName)?'fontelloicon-'+bonus.iconName:'fontelloicon-laptop'}}"></i>
+            </div>
+          </div>
+
+          <h3><a href="#" class="username" psy class-name="BonusEntity" field-name="title" el-id="bonus.id">{{bonus.title}}</a>
+          </h3>
+
+          <p><a href="#" class="username" psy class-name="BonusEntity" field-name="description" el-id="bonus.id">{{bonus.description}}</a>
+          </p>
+        </div>
+
+      </div>
+        <div id="icon_popup"></div>
+    </div>
+
+    <div class="department">
+      <h2>Галерея</h2>
+      <span class="underline">&nbsp;</span>
+    </div>
+
+
+    <ul id="carousel" style="" vb-carousel class="triggerAnimation animated"
+        data-animate="fadeInUp">
+      <li class="wrap-image item project-post" ng-repeat="img in psychologist.gallery" id="{{img.id}}">
+        <img src="{{img.url}}" style="height:150px;width:auto;"/>
+
+        <div class="chkbox" ng-click="removeItem(img.id)"></div>
+      </li>
+
+
+    </ul>
+
+    <div>
+      <button id="showDropzone" class="btn btn-info">Добавить новые файлы</button>
+    </div>
+    <div id="dropzone">
+      <form action="http://www.torrentplease.com/dropzone.php" class="dropzone dz-clickable" id="demo-upload">
+        <button id="saveGallery" class="btn btn-info">Сохранить</button>
+
+        <div class="dz-message">
+          Перетащите сюда свои файлы которые содержат информацию о вас.<br>
+          <span class="note">(дипломы, кабинет, фото с тренингов)</span>
+        </div>
+
+      </form>
+    </div>
+
+    <div id="test-form-div" class="mfp-hide white-popup-block">
+      <form id="test-form" action="/upload-jquery" method="POST" enctype="multipart/form-data">
+        <h1 id="avatar-title">Перетащите сюда новый аватар</h1>
+        <fieldset style="border:0;">
+          <div>
+            <img id="drag-image" ng-show="toBoolean(psychologist.avatar)"
+                 src="{{toBoolean(psychologist.avatar.url)?psychologist.avatar.url:'icons/avatar-default.png'}}">
+          </div>
+          <div id="avatar-buttons">
+            <input id="uploader" type="file" name="files[]" multiple>
+            <button id="okButton" style="display: none;" class="btn btn-primary">
+              <i class="icon-upload icon-white"></i>
+              <span>Подходит!</span>
+            </button>
+
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="clearfix" elastic-columns-my data-columns="2">
+      <div style="">
+        <div>
+          <div><img src="/images/map.png"/></div>
+        </div>
+      </div>
+      <div class="entry-meta common doctors-single doctors-posts" style="">
+        <h5>Психолог {{psychologist.userInfo.fullname}}</h5>
+
+        <div class="doctor-departments"><a
+            href="http://inspirythemesdemo.com/medicalpress/department/gynaecological-clinic/" rel="tag">Семейный
+          психолог
+        </a>, <a href="http://inspirythemesdemo.com/medicalpress/department/pediatrics-clinic/" rel="tag">Детский
+          психолог</a></div>
+        <div class="doc-schedule clearfix">
+
+            <div data-ng-repeat="(key, item) in psychologyCharacteristics.fields | orderBy:'+order'">
+                <p class="doc-info"><strong>{{item.title}}</strong></p>
+                <p><span><a href="#" psy class-name="PropertyForListKeyValueEntity" field-name="{{key}}" el-id="$item.id" class="username">{{item.value}}</a></span></p>
+            </div>
+
+          <div class="social-icon clearfix">
+            <ul class="doc-social-nav">
+              <li class="twitter-icon"><a target="_blank" href="https://twitter.com/InspiryThemes"><i
+                  class="fa fa-twitter"></i></a></li>
+              <li class="facebook-icon"><a target="_blank"
+                                           href="http://www.facebook.com/people/@/https://www.facebook.com/InspiryThemes"><i
+                  class="fa fa-facebook"></i></a></li>
+              <li class="linkedin-icon"><a target="_blank" href="#linkedin"><i class="fa fa-linkedin"></i></a></li>
+              <li class="skype-icon"><a target="_blank" href="skype:testusername?add"><i
+                  class="fa fa-skype"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--
+          <div>
+            <form id="fileupload" action="/upload-jquery" method="POST" enctype="multipart/form-data">
+              &lt;!&ndash; The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload &ndash;&gt;
+              <div class="row fileupload-buttonbar">
+                <div class="span7">
+                  &lt;!&ndash; The fileinput-button span is used to style the file input field as button &ndash;&gt;
+                    <span class="btn btn-success fileinput-button">
+                        <i class="glyphicon glyphicon-plus glyphicon-white"></i>
+                        <span>Добавить файлы...</span>
+                        <input type="file" name="files[]" multiple>
+                    </span>
+                  <button type="submit" class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload glyphicon-white"></i>
+                    <span>Начать загрузку</span>
+                  </button>
+                  <button type="reset" class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle glyphicon-white"></i>
+                    <span>Отменить загрузку</span>
+                  </button>
+                  <button type="button" class="btn btn-danger delete">
+                    <i class="glyphicon glyphicon-trash glyphicon-white"></i>
+                    <span>Удалить</span>
+                  </button>
+                  <input type="checkbox" class="toggle">
+                </div>
+                &lt;!&ndash; The global progress information &ndash;&gt;
+                <div class="span5 fileupload-progress fade">
+                  &lt;!&ndash; The global progress bar &ndash;&gt;
+                  <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0"
+                       aria-valuemax="100">
+                    <div class="bar" style="width:0%;"></div>
+                  </div>
+                  &lt;!&ndash; The extended global progress information &ndash;&gt;
+                  <div class="progress-extended">&nbsp;</div>
+                </div>
+              </div>
+              &lt;!&ndash; The loading indicator is shown during file processing &ndash;&gt;
+              <div class="fileupload-loading"></div>
+              <br>
+              &lt;!&ndash; The table listing the files available for upload/download &ndash;&gt;
+              <table role="presentation" class="table table-striped">
+                <tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
+              </table>
+            </form>
+          </div>
+    -->
+
+    <script id="template-upload" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload ">
+        <td class="preview"><span class=""></span></td>
+        <td class="name"><span>{%=file.name%}</span></td>
+        <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+        {%=file.error%}
+        {% if (file.error) { %}
+            <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else if (o.files.valid && !i) { %}
+            <td>
+                <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
+            </td>
+            <td class="start">{% if (!o.options.autoUpload) { %}
+                <button class="btn btn-primary">
+                    <i class="icon-upload icon-white"></i>
+                    <span>{%=locale.fileupload.start%}</span>
+                </button>
+            {% } %}</td>
+        {% } else { %}
+            <td colspan="2"></td>
+        {% } %}
+        <td class="start">
+                <button class="btn btn-primary">
+                    <i class="icon-upload icon-white"></i>
+                    <span>{%=locale.fileupload.start%}</span>
+                </button>
+            </td>
+        <td class="cancel">{% if (!i) { %}
+            <button class="btn btn-warning">
+                <i class="icon-ban-circle icon-white"></i>
+                <span>{%=locale.fileupload.cancel%}</span>
+            </button>
+        {% } %}</td>
+    </tr>
+{% } %}
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <!-- The template to display files available for download -->
+    <script id="template-download" type="text/x-tmpl">
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download ">
+        {% if (file.error) { %}
+            <td></td>
+            <td class="name"><span>{%=file.name%}</span></td>
+            <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+            <td class="error" colspan="2"><span class="label label-important">{%=locale.fileupload.error%}</span> {%=locale.fileupload.errors[file.error] || file.error%}</td>
+        {% } else { %}
+            <td class="preview">{% if (file.thumbnail_url) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}"></a>
+            {% } %}</td>
+            <td class="name">
+                <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
+            </td>
+            <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
+            <td colspan="2"></td>
+        {% } %}
+        <td class="delete">
+            <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
+                <i class="icon-trash icon-white"></i>
+                <span>{%=locale.fileupload.destroy%}</span>
+            </button>
+            <input type="checkbox" name="delete" value="1">
+        </td>
+    </tr>
+{% } %}
+
+
+
+
+
+
+
+
+
+
+    </script>
+    <!--<div class="owl-item" style="width: auto;">-->
+    <script id="gallery-item" type="text/x-tmpl">
+        <li class="wrap-image item project-post" id="{{img.id}}">
+          <img src="{{img.url}}" style="height:150px;width:auto;"/>
+          <div class="chkbox" onclick="removeItem({{img.id}}, event)"></div>
+        </li>
+
+
+
+    </script>
+
+    <script id="choose-icon-wrapper" type="text/x-tmpl">
+      <div class="white-popup">
+      <h3 class="popup-title">Выберите иконку к вашему бонусу</h3>
+      <div class="inner">
+      <ul id="choose-icon">
+      {{#each fonts}}
+        <li ><div class="box-icon"><span id="{{this}}" class="fontelloicon-{{this}}" onclick="saveIcon({{this}})"></span></div></li>
+        {{/each}}
+      </ul>
+      </div>
+      </div>
+
+
+
+    </script>
+
+  </div>
+</div>

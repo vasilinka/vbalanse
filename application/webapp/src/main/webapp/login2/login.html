@@ -1,0 +1,46 @@
+<div class="loginContainer">
+    <form id="myForm" name="$parent.myForm">
+        <div class="panel panel-default box-shadow">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    Вход
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="form-group" ng-class="{'has-error': form.username.$invalid && submitted}">
+                    <!--type="email"-->
+                    <vb-form-input field-name="username" field-title="Email" ng-model="username"/>
+                    <!--<label for="username1" class="control-label">Email</label>
+                    <input
+                            class="form-control"
+                            id="username1"
+                            placeholder="Логин"
+                            name="username1"
+                            ng-model="username1"
+                            ng-model-options="{updateOn: 'blur'}"
+                            required>-->
+                </div>
+                <div class="form-group" ng-class="{'has-error': form.password.$invalid && submitted}">
+                    <vb-form-input field-name="password" field-type="password" field-title="Пароль" ng-model="password"/>
+                    <!--<label for="password" class="control-label">Пароль</label>
+                    <input
+                            type="password"
+                            class="form-control"
+                            id="password"
+                            name="password"
+                            placeholder="Пароль"
+                            ng-model="password"
+                            required>-->
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" data-ng-click="login()">Войти</button>
+                <a href="#/register">Зарегистрироваться</a>
+                <a href="#/forgotPassword">Забыли&nbsp;пароль?</a>
+                <!--ng-click="login()"-->
+            </div>
+        </div>
+    </form>
+
+    <div class="alert alert-success message" ng-show="showMessageLogin">Супер! Успешный логин</div>
+
+</div>
+

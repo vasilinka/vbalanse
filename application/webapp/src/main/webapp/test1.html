@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="exampleApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/prod/styles.css">
+</head>
+<body>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<!--
+<script src="angular-1.2.22.js"></script>
+<script src="angular-animate-1.2.22.js"></script>
+-->
+<script src="test/angular.js"></script>
+<script src="test/angular-animate.js"></script>
+<script src="js/angular-resource-1.2.3.js"></script>
+<script src="js/angular-route-1.2.3.js"></script>
+<script src="js/angular-cookies-1.2.3.js"></script>
+<!--<script src="login.js"></script>-->
+<script src="app2.js"></script>
+<script src="js/config.js"></script>
+
+<!--<script src="login.js"></script>
+-->
+<a href="#/login">Войти</a>
+<a href="/user/register.html">Регистрация</a>
+<div>
+    <!--Placeholder for vies -->
+    <div data-ng-view=""></div>
+</div>
+
+<div ng-controller="shakeTest">
+    <span id="my-element" shake-that>Hello world</span>
+</div>
+
+
+</body>
+</html>

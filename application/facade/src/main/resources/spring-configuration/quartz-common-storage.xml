@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This Learning Management System (“Software”) is the exclusive and sole property of Baja Education. Inc. (“Baja”).
+  ~ Baja has the sole rights to copy the software, create derivatives or modified versions of it, distribute copies
+  ~ to End Users by license, sale or otherwise. Anyone exercising any of these exclusive rights which also includes
+  ~ indirect copying  such as unauthorized translation of the code into a different programming language without
+  ~ written explicit permission from Baja is an infringer and subject to liability for damages or statutory fines.
+  ~ Interested parties may contact bpozos@gmail.com.
+  ~
+  ~ (c) 2012 Baja Education
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+
+  <bean id="storageFileQuartzTask" class="by.vbalanse.facade.storage.StorageFileQuartzTaskFacadeImpl"
+        autowire="byName">
+    <property name="removeTempFileEnable" value="${quartz.remove.tempFile_enable}"/>
+    <property name="checkStorageFileEnable" value="${quartz.check.storage.file_enable}"/>
+  </bean>
+
+  <bean id="storageFileQuartzTaskBeanProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <property name="target" ref="storageFileQuartzTask"/>
+    <property name="proxyInterfaces"
+              value="by.vbalanse.facade.storage.StorageFileQuartzTaskFacade"/>
+    <property name="interceptorNames" value="hibernateInterceptor"/>
+  </bean>
+
+  <!-- Detail info about the job -->
+  <bean id="storageFileQuartzTaskDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="storageFileQuartzTaskBeanProxy"/>
+    <property name="targetMethod" value="deleteTempFiles"/>
+    <property name="concurrent" value="false"/>
+  </bean>
+
+  <bean id="failedStorageFileQuartzTaskDetail"
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="storageFileQuartzTaskBeanProxy"/>
+    <property name="targetMethod" value="checkStorageFileConsistencyByQuartz"/>
+    <property name="concurrent" value="false"/>
+  </bean>
+
+  <bean id="storageFileQuartzTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <property name="jobDetail" ref="storageFileQuartzTaskDetail"/>
+    <property name="cronExpression" value="${quartz.remove.tempFile.cron_expression}"/>
+  </bean>
+
+  <bean id="failedStorageFileQuartzTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    <property name="jobDetail" ref="failedStorageFileQuartzTaskDetail"/>
+    <property name="cronExpression" value="${quartz.check.storage.file.cron_expression}"/>
+  </bean>
+
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="storageFileQuartzTaskTrigger"/>
+        <ref bean="failedStorageFileQuartzTaskTrigger"/>
+      </list>
+    </property>
+  </bean>
+</beans>

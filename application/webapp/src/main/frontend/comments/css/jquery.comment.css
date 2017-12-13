@@ -1,0 +1,135 @@
+/*!
+ * jQuery Post-Comment Plugin v.1.0
+ * created [2013-02-26 17:49 AM]
+ * TODO: Documentation
+ *
+ * Copyright 2013, hendra@kunchy.com or henyana@gmail.com
+ * http://www.abelware.com
+ */
+.clear{
+	clear: both;
+}
+
+.comments-display{
+
+}
+
+.comments-display .dot{
+	padding: 0 3px;
+	font-size: 75%;
+	color: #CCC;
+	line-height: 1.4;
+}
+
+.comments-display .in-reply-to{
+	display:inline-table;
+}
+
+.comments-display .in-reply-to .ui-icon{
+	height:12px;
+}
+
+.comments-display .comment-length{
+	font-weight:bold;
+	padding-bottom:7px;
+}
+
+.comments-display .posted-comments-postbox {
+	padding-top:3px;
+	/*border-bottom:2px solid #F0F0F0;*/
+	position: relative;
+	min-height: 95px;
+}
+
+ul.posted-comments {
+	list-style: none;
+	margin: 0;
+}
+
+ul.posted-comments li {
+	padding:10px 0 0;
+	border-top:1px solid #F0F0F0;
+}
+
+.avatar img{
+	width:28px;
+	height:28px;
+}
+
+.posted-comments-postbox .avatar{
+
+}
+
+.posted-comments-postbox .comment-form{
+	/*margin-left: 75px;*/
+	/*min-width: 85%;*/
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+}
+
+.posted-comments-postbox textarea, .posted-comment-form-edit textarea{
+	width:100%;
+	height:80px;
+}
+
+.edit-postbox textarea {
+}
+
+.edit-postbox {
+	margin: 0 15px 0 15px;
+
+}
+
+.posted-comment-container{
+	margin-left: 35px;
+	min-width:85%;
+}
+
+.posted-comment-head{
+	font-size:7pt;
+}
+
+.posted-comment-head .posted-comment-author{
+	font-weight:bold;
+}
+
+.posted-comment-foot, .save-cancel{
+	font-size:8pt;
+	color:#F0F0F0;
+	padding-bottom: 10px;
+	/*padding-left: 5px;*/
+}
+
+.real-time {
+	color: #337ab7;
+}
+
+.save-cancel {
+	margin-left: -5px;
+}
+
+.posted-comment-foot {
+	padding-left: 10px;
+}
+
+ul.posted-comment-childs{
+	list-style: none;
+	margin-left:40px;
+	padding-top:12px;
+}
+
+ul.posted-comment-childs .avatar img{
+	width:22px;
+	height:22px;
+}
+ul {
+	margin:0;
+	padding:0;
+}
+
+.posted-comment-childs {
+	margin-left:20px;
+}

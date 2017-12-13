@@ -1,0 +1,12 @@
+<div class="last-block">
+  <div style="border: 1px solid #e1e1e1;  margin-bottom: 30px; margin-right: 15px; padding: 10px;"
+       >
+    <h2>Последние статьи</h2>
+
+    <p ng-repeat="article in articles">
+      {{article.date}} <a href="#/articleGuest?id={{article.id}}">{{article.title}}</a> <a href="#/articleGuest?id={{article.id}}&comments=1" class="pull-right"><i class="fontello fontelloicon-comment"></i> {{article.countOfComments}}</a></p>
+
+    <!--<p>To see the difference between static and fixed top navbars, just scroll.</p>-->
+
+  </div>
+</div>

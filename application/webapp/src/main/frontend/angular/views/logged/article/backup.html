@@ -1,0 +1,310 @@
+<ui-select multiple ng-model="address.selected"
+           theme="bootstrap"
+           ng-disabled="disabled"
+           dupes="false"
+
+           style="width: 300px;">
+    <ui-select-match placeholder="Enter an address...">{{$item.formatted_address}}</ui-select-match>
+    <ui-select-choices repeat="address in addresses track by $index"
+                       refresh="refreshAddresses($select.search)"
+                       refresh-delay="0">
+        <div ng-bind-html="address.formatted_address | highlight: $select.search"></div>
+    </ui-select-choices>
+</ui-select>
+
+
+<!--
+                        <small>
+                            title: {{department.title}}
+                            code: <span ng-bind-html="''+department.code | highlight: $select.search"></span>
+                        </small>
+-->
+
+<div class="bs-example">
+    <input id="tags" type="text" value="Amsterdam" data-role="tagsinput"/>
+    <tags-input ng-model="tags1"><!-- display-property="title"-->
+        <auto-complete source="loadTags($query)"></auto-complete>
+    </tags-input>
+</div>
+</div>
+
+
+<!--<button class="btn btn-primary" data-indi-click="getDepartments()">Get Department</button>-->
+
+<div class="info" style="display: block; opacity: 0.157726447035656;">
+  <p class="tags">
+    <a href="">Fashion</a>
+  </p>
+  <h1><a href="">What To Look Forward To In 2014</a></h1>
+  <p class="text">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+  </p>
+  <p class="details">Sep 25, 2013 | <a href="author.html">Alex Grosville</a></p>
+</div>
+
+http://modarama.pryanik.co/index.html
+carousel width 455 height 367
+
+http://demo.themepicasso.com/lab/?theme=stain-html - contact page super
+
+http://themeforest.net/item/medicalpress-health-and-medical-wordpress-theme/full_screen_preview/7789703 - date for article super
+
+http://demo.envalabs.biz/?product=Britanews_html - blog cpol with overflow text and author(blog->classic)
+
+http://themeforest.net/item/quentin-premium-multipurpose-responsive-template/full_screen_preview/4487988 - recent works good design
+
+http://premiumlayers.com/demos/tempcore/single-post.html - comments
+
+http://inspirythemesdemo.com/medicalpress/doctor/dr-adaline-becka/ - медицинский, про доктора
+http://inspirythemesdemo.com/medicalpress/image-post-format/ - статья medicalpress
+
+http://www.uxbarn.com/demo/corporate/thine/about.php - menu over image
+
+http://themeforest.net/item/medicalpress-health-and-medical-wordpress-theme/full_screen_preview/7789703 - cool appointment(medicalpress)
+
+http://demo.themepicasso.com/lab/?theme=stain-html - roll text\
+
+http://templates.joomla-monster.com/joomla30/jm-doctor/ - testimonials good
+
+http://templates.joomla-monster.com/joomla30/jm-doctor/index.php/tabber - хорошее всплывающее меню сверху, контакты супер иконки большие снизу
+
+http://theme.dima-lab.com/okab/demo-photographer-work.html - cool gallery of photos, on hover become colouful, photography nice site
+
+http://www.alessioatzeni.com/blog/chariot-professional-responsive-portfolio-theme/ - right button next previous, left menu with small icons, big table with readings nice but unordinary
+
+http://themeforest.net/item/tempcore-business-html5-template/full_screen_preview/6905608 slide with above cool icons text styles
+http://previous.themepunch.com/revolution4-jquery/liveguide/01.Sample-Boxed.html
+
+http://themeforest.net/item/tempcore-business-html5-template/full_screen_preview/6905608 - blog with date over article
+
+http://themeforest.net/item/tempcore-business-html5-template/full_screen_preview/6905608 - table with image and prices, list blog overflow - , nice colours
+
+http://www.responsiveexpert.com/themes/ganpathi/index-01.html#all-features - client review as visits, next to visits good mobile design red black white
+http://www.responsiveexpert.com/themes/ganpathi/index-01.html#all-features- contact with background road
+http://themeforest.net/item/amilia-responsive-multipurpose-template/full_screen_preview/10067059 - over menu good, contact
+
+красиво - полупрозрачные картинки через фон, градиенты тени, 3d эффекты поворачивания https://0.s3.envato.com/files/107286550/neat-preview.__large_preview.png
+
+http://modarama.pryanik.co/search-result.html - modarama news
+
+http://webnus.biz/themes/extent-html/elements.html - good style, light white, good pictures
+
+http://demos.codexcoder.com/focuz-html/no-hero-banner/team-members-02.html - interesting design, people creative photos with psychology humour, styles for image borders, lines under titles
+http://demos.codexcoder.com/focuz-html/no-hero-banner/blog-19-Post-ImagePost.html - reply button on the right, no lines but design margins in comments, menu on top good
+https://github.com/joeldbirch/superfish
+
+http://themeforest.net/item/monopol-lawyers-business-html-template/full_screen_preview/9845468 - people just with social link, good photos
+
+http://themes.uxbarn.com/?theme=archtek_html - good use of isotope, light pictures
+
+http://themes.uxbarn.com/?theme=archtek_html - good block list, text under image but with lines, just line above image
+http://themeforest.net/item/quentin-premium-multipurpose-responsive-template/full_screen_preview/4487988 - portfolio page nice
+
+http://venusdemo.com/magento/newshopping/index.php/?___store=default - shopping
+
+http://www.templatemonster.com/demo/45835.html - good взгляд
+
+
+http://themeforest.net/item/weekly-news-responsive-newsmagazine-template/full_screen_preview/8122934 - Хороший дизайн всё в картинках, комменты поверх картинок
+
+admin
+http://switcher.oklerthemes.com/?theme=Porto-Admin  - login form
+
+http://cdn.mosaicpro.biz/themekit-3.6.3-final/dist/themes/admin/index.html#- very beautiful photo with text and photo above and icon comments, and info comments
+below
+
+http://tf.dtbaker.com.au/preview/?theme=25&style=0 - mommy's blog, beatiful date on the right
+
+http://themeforest.net/item/novux-html/full_screen_preview/128226 - slider in 3d
+
+http://www.webcondomini.net/demo/ui_buttons.html - some interfaces elements
+
+
+
+
+
+<div class="col-md-12 large-6 columns">
+  <div class="col-md-6">
+    <h4>Our Skills</h4>
+    Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
+
+    <div class="skills-progress   animation  animation-active"><p>Wordpress<span>90%</span></p><div class="meter nostrips wp">
+      <span style="width:90%"></span>
+    </div></div>
+
+    <div class="skills-progress   animation  animation-active"><p>CSS3<span>40%</span></p><div class="meter nostrips wp">
+      <span style="width:40%"></span>
+    </div></div>
+
+    <div class="skills-progress   animation  animation-active"><p>HTML5<span>70%</span></p><div class="meter nostrips wp">
+      <span style="width:70%"></span>
+    </div></div>
+
+    <div class="skills-progress   animation  animation-active"><p>Photoshop<span>80%</span></p><div class="meter nostrips wp">
+      <span style="width:80%"></span>
+    </div></div>
+
+  </div>
+
+  <h2>Our Specialized Fields</h2>
+  <div class=" progress-bar1"><span class="bar-label">Architecture Design</span><span class="bar-meter solid-red" data-meter="60"></span></div>
+  <div class=" progress-bar1"><span class="bar-label">Photography</span><span class="bar-meter solid-yellow" data-meter="40"></span></div>
+  <div class=" progress-bar1"><span class="bar-label">Management</span><span class="bar-meter solid-green" data-meter="90"></span></div>
+  <div class=" progress-bar1"><span class="bar-label">Customer Relationship</span><span class="bar-meter solid-blue" data-meter="100"></span></div>
+  <div class=" progress-bar1"><span class="bar-label">Marketing</span><span class="bar-meter solid-purple" data-meter="55"></span></div>
+</div>
+
+<div class="left_meta clearfix entry-meta">
+  <time class="entry-time updated" datetime="2014-05-14T06:53:07+00:00">May <strong>14</strong></time>
+  <span class="comments_count clearfix entry-comments-link"><a href="http://inspirythemesdemo.com/medicalpress/gallery-post-format/#respond" title="Comment on Gallery Post Format">0</a></span>
+</div>
+
+<table st-table="rowCollection" class="table table-striped">
+  <thead>
+  <tr>
+    <th st-sort="firstName">first name</th>
+    <th>last name</th>
+    <th st-sort="birthDate">birth date</th>
+    <th>balance</th>
+    <th>email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="row in rowCollection">
+    <td>{{row.firstName}}</td>
+    <td>{{row.lastName}}</td>
+    <td>{{row.birthDate}}</td>
+    <td>{{row.balance}}</td>
+    <td>{{row.email}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<button type="button" class="close" aria-hidden="true">×</button>
+
+<script src="js/feather.js"></script>
+
+
+<ol>
+  <li>
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" placeholder="Name">
+  </li>
+  <li>
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" placeholder="example@domain.com">
+  </li>
+  <li>
+    <label for="phone">Phone</label>
+    <input id="phone" name="phone" type="tel" placeholder="Eg. +447500000000">
+  </li>
+  <li>
+    <label for="textarea">Textarea</label><br/>
+    <textarea id="textarea">Try to resize me to see how popup CSS-based resizing works.</textarea>
+  </li>
+  <li>
+    <button type="submit" class="btn btn-primary start">
+      <i class="icon-upload icon-white"></i>
+      <span>Start upload</span>
+    </button>
+  </li>
+</ol>
+
+
+ng-cropper
+ng-options="options"
+ng-show="show.cropper"
+ng-hide="hide.cropper"
+
+<button id="cropButton" class="btn btn-primary">
+  <i class="icon-upload icon-white"></i>
+  <span>Crop</span>
+</button>
+
+
+<!--editable-text="psychologist.userInfo.firstName"-->
+
+<!--<div class="testimonial" style="position: relative;">
+  <div class="tg-one-half">
+    <div class="testimonial-wrap">
+      <div class="testimonial-content clearfix">
+        <div class="author-image">
+          <img title="author" alt="author" src="http://demo.themegrill.com/esteem/wp-content/uploads/sites/7/2014/07/man11.jpg">
+        </div>&lt;!&ndash; .testimonial-content &ndash;&gt;
+        <div class="testimonial-text">
+          <p>Chocolate ice cream gummies jelly beans lemon drops. Pudding jujubes danish cheesecake. Sesame snaps candy sugar plum liquorice pastry tart dessert.</p>
+        </div>&lt;!&ndash; .testimonial-text &ndash;&gt;
+      </div>&lt;!&ndash; .testimonial-content &ndash;&gt;
+      <div class="testimonial-byline">
+        Bipin Singh 						<span class="author-desc">CEO <a href="" title="XYZ">XYZ</a></span>
+      </div>&lt;!&ndash; .byline &ndash;&gt;
+    </div>&lt;!&ndash; .testimonial-wrap &ndash;&gt;
+  </div>&lt;!&ndash; .tg-one-half &ndash;&gt;
+
+  <div class="tg-one-half tg-one-half-last">
+    <div class="testimonial-wrap">
+      <div class="testimonial-content clearfix">
+        <div class="author-image">
+          <img title="author" alt="author" src="http://demo.themegrill.com/esteem/wp-content/uploads/sites/7/2014/07/man2.jpg">
+        </div>&lt;!&ndash; .testimonial-content &ndash;&gt;
+        <div class="testimonial-text">
+          <p>Chocolate ice cream gummies jelly beans lemon drops. Pudding jujubes danish cheesecake. Sesame snaps candy sugar plum liquorice pastry tart dessert.</p>
+        </div>&lt;!&ndash; .testimonial-text &ndash;&gt;
+      </div>&lt;!&ndash; .testimonial-content &ndash;&gt;
+      <div class="testimonial-byline">
+        Kumar Shrestha 						<span class="author-desc">Manager <a href="" title="Global Bank">Global Bank</a></span>
+      </div>&lt;!&ndash; .byline &ndash;&gt;
+    </div>&lt;!&ndash; .testimonial-wrap &ndash;&gt;
+  </div>&lt;!&ndash; .tg-one-half &ndash;&gt;
+</div>-->
+
+<!--
+         <div class="item"><img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
+
+           <h3>John Smith
+             <small>Job Title</small>
+           </h3>
+           <p>What does this team member to? Keep it short! This is also a great spot for social links!</p></div>
+         <div class="item"><img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
+
+           <h3>John Smith
+             <small>Job Title</small>
+           </h3>
+           <p>What does this team member to? Keep it short! This is also a great spot for social links!</p></div>
+         <div class="item"><img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
+
+           <h3>John Smith
+             <small>Job Title</small>
+           </h3>
+           <p>What does this team member to? Keep it short! This is also a great spot for social links!</p></div>
+         <div class="item"><img class="img-circle img-responsive img-center" src="http://placehold.it/100x100" alt="">
+
+           <h3>John Smith
+             <small>Job Title</small>
+           </h3>
+           <p>What does this team member to? Keep it short! This is also a great spot for social links!</p></div>
+       </div>
+ -->
+
+<div class="hover-box">
+  <div class="inner-hover-box">
+    <h2>Cool App Design</h2>
+    <p>development, mobile</p>
+    <a href="/uploads/image8.jpg" class="zoom"><i class="fa fa-search"></i></a>
+    <a href="single-project.html" class="link"><i class="fa fa-file-o"></i></a>
+  </div>
+</div>
+
+<a href="#">
+  <i class="fontelloicon fontelloicon-link-4"></i>
+</a>
+<a href="#">
+  <i class="fontelloicon fontelloicon-pencil-3 "></i>
+</a>
+
+<div class="tools tools-bottom">
+  <a href="#">
+    <i class="fontelloicon fontelloicon-cancel"></i>
+  </a>
+</div>
+ handlebars {{/each}}

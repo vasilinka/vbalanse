@@ -1,0 +1,144 @@
+<div class="main_content" style="height: 100%;" loaddirective>
+  <div ng-include="'angular/views/guest/mainMenu.html'"/>
+
+
+  <div class="vb-center-block-full">
+    <div
+        style="position: relative;overflow: hidden; background:url(icons/background.png) repeat-y; height: 300px; min-width: 800px;">
+      <div style="height:300px;">
+          <div class="profile-avatar" id="profile-avatar" style="width:280px; height:280px; background: url({{toBoolean(psychologist.avatar.url)?psychologist.avatar.url:'icons/avatar-default.png'}});background-size: 280px 280px; ">
+     </div>
+      </div>
+
+      <div class="banner" style="z-index: 999; " align="center">
+          <div data-ng-repeat="(key, item) in bannerTitles.fields">
+              <p ng-class="{'font-77': $index==0, 'font-47': $index==1}"><span>{{item.value}}</span></p>
+          </div>
+      </div>
+    </div>
+
+    <div id="wrapper" style="position: relative;">
+      <div id="list" elastic-columns style="position: relative;">
+        <div class="bonus-item" data-ng-repeat="bonus in bonuses">
+          <div class="service-border">
+            <div class="service-image-wrap">
+                <i class="{{toBoolean(bonus.iconName)?'fontelloicon-'+bonus.iconName:'fontelloicon-laptop'}}"></i>
+            </div>
+          </div>
+          <h3>{{bonus.title}}
+          </h3>
+          <p>{{bonus.description}}</p></div>
+      </div>
+    </div>
+
+
+      <div id="carouselTitleId" class="department">
+          <h2>Галерея</h2>
+          <span class="underline">&nbsp;</span>
+      </div>
+
+    <ul id="carousel"  tst="" style="" vb-carousel-auth class="triggerAnimation animated"
+        data-animate="fadeInUp">
+        <li class="wrap-image item project-post" ng-repeat="img in psychologist.gallery" id="{{img.id}}">
+            <img src="{{img.url}}" style="height:150px;width:auto;cursor:pointer;"/>
+        </li>
+    </ul>
+
+
+    <div id="article-list" style="position: relative;" elastic-columns-my style="position: relative;">
+      <article data-ng-repeat="article in articles">
+        <div class="portfolio-entry-img-link">
+          <img style="" src="/images/Braun.png"
+               alt="Designs Slider" class="portfolio-entry-img">
+        </div>
+        <div class="portfolio-entry-description"><h2><a
+            href="#/articleGuest?id={{article.id}}" title="Designs Slider" rel="bookmark">{{article.title}}</a>
+        </h2>
+
+          <div class="portfolio-entry-excerpt">{{article.excerpt}}</div>
+        </div>
+      </article>
+    </div>
+
+
+    <div class="department col-md-12 ">
+      <h2>Контакты</h2>
+      <span class="underline">&nbsp;</span>
+    </div>
+
+
+    <div id="google-map-holder" class="col-md-6">
+      <div class="popin">
+        <div id="map"></div>
+      </div>
+    </div>
+    <div class="entry-meta common col-md-5 doctors-single doctors-posts">
+      <h5>Психолог {{psychologist.userInfo.fullname}}</h5>
+
+      <div class="doctor-departments"><a
+          href="http://inspirythemesdemo.com/medicalpress/department/gynaecological-clinic/" rel="tag">Семейный психолог
+      </a>, <a href="http://inspirythemesdemo.com/medicalpress/department/pediatrics-clinic/" rel="tag">Детский
+        психолог</a></div>
+      <div class="doc-schedule clearfix">
+          <div data-ng-repeat="(key, item) in authorPsychologyCharacteristics.fields | orderBy:'+order'">
+              <p class="doc-info"><strong>{{item.title}}</strong></p>
+              <p><span>{{item.value}}</span></p>
+          </div>
+      </div>
+      <div class="social-icon clearfix">
+        <ul class="doc-social-nav">
+          <li class="twitter-icon"><a target="_blank" href="https://twitter.com/InspiryThemes"><i
+              class="fa fa-twitter"></i></a></li>
+          <li class="facebook-icon"><a target="_blank"
+                                       href="http://www.facebook.com/people/@/https://www.facebook.com/InspiryThemes"><i
+              class="fa fa-facebook"></i></a></li>
+          <li class="linkedin-icon"><a target="_blank" href="#linkedin"><i class="fa fa-linkedin"></i></a></li>
+          <li class="skype-icon"><a target="_blank" href="skype:testusername?add"><i class="fa fa-skype"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="department col-md-12 ">
+      <h2>Отзывы о психологе</h2>
+      <span class="underline">&nbsp;</span>
+    </div>
+
+    <div class="col-md-6 section-full-height">
+        <div class="vertical-center-content">
+            <div class="inner-element-container">
+                <div class="header-wrap">
+                    <div class="section-header">
+                        <h2 style="">Оставьте ваш отзыв</h2>
+                    </div>
+                </div>
+                <form name="feedbackForm" class="home-contact-frm" ng-submit="saveFeedback()">
+                    <ul>
+                        <li><div><input placeholder="Имя" type="text" class="h-frm-input" name="name" ng-model="feedback.firstName"></div></li>
+                        <li><input placeholder="Email" type="email" class="h-frm-input" name="email" ng-model="feedback.email"></li>
+                        <li><textarea placeholder="Сообщение" class="h-frm-input h-contact-message" name="message" ng-model="feedback.message" style="resize:vertical"></textarea></li>
+                    </ul>
+                    <input type="submit" value="Отправить" class="btn btn-primary btn-post-msg" ng-disabled="feedbackForm.$invalid" id="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <section id="reviews" class="col-md-5 container wow fadeInUp">
+      <div class="row text-center">
+        <div class="col-md-12 stars">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star big"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+        </div>
+        <div class="col-md-12 col-md-offset-1">
+            <div feedback-carousel attr-id="{{userId}}"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Reviews end -->
+  </div>
+
+  <a href="#top" id="scroll-top"></a>
+</div>

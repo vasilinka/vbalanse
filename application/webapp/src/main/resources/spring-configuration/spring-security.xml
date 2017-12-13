@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+  <!-- Enable the @Secured annotation to secure service layer methods   -->
+  <security:global-method-security secured-annotations="enabled"/>
+
+  <security:http security="none" pattern="/favicon.ico"/>
+
+  <security:authentication-manager alias="authenticationManager">
+    <security:authentication-provider user-service-ref="userDetailsService">
+      <security:password-encoder hash="md5"/>
+    </security:authentication-provider>
+  </security:authentication-manager>
+
+  <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler">
+    <property name="invalidateHttpSession" value="false"/>
+  </bean>
+
+  <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+    <property name="warnLogCategory" value="apperror" />
+    <property name="exceptionMappings">
+      <props>
+        <prop key="java.lang.Exception">error</prop>
+      </props>
+    </property>
+  </bean>-->
+  <!--<security:http auto-config="true">-->
+  <!--<security:session-management session-fixation-protection="newSession"/>-->
+
+<!--
+  CHANNEL_FILTER,
+  SECURITY_CONTEXT_FILTER,
+  CONCURRENT_SESSION_FILTER,
+  LOGOUT_FILTER,
+  X509_FILTER,
+  PRE_AUTH_FILTER,
+  CAS_FILTER,
+  FORM_LOGIN_FILTER,
+  OPENID_FILTER,
+  LOGIN_PAGE_FILTER,
+  DIGEST_AUTH_FILTER,
+  BASIC_AUTH_FILTER,
+  REQUEST_CACHE_FILTER,
+  SERVLET_API_SUPPORT_FILTER,
+  JAAS_API_SUPPORT_FILTER,                          p
+
+
+  9
+  REMEMBER_ME_FILTER,
+  ANONYMOUS_FILTER,
+  SESSION_MANAGEMENT_FILTER,
+  EXCEPTION_TRANSLATION_FILTER,
+  FILTER_SECURITY_INTERCEPTOR,
+  SWITCH_USER_FILTER,
+-->
+
+  <!--<bean id="filterChainProxy" class="org.springframework.security.web.FilterChainProxy">
+    <security:filter-chain-map path-type="ant">
+      <security:filter-chain pattern="/login2/login.html" filters="
+
+           channelProcessingFilter,
+           securityContextPersistenceFilter,
+           concurrentSessionFilter,
+           basicAuthenticationFilter,
+           anonymousAuthenticationFilter,
+           exceptionTranslationFilter,
+           filterSecurityInterceptor" />
+      <security:filter-chain pattern="/**" filters="
+           channelProcessingFilter,
+           securityContextPersistenceFilter,
+           concurrentSessionFilter,
+           basicAuthenticationFilter,
+           requestCacheAwareFilter,
+           anonymousAuthenticationFilter,
+           exceptionTranslationFilter,
+           filterSecurityInterceptor
+           " />
+    </security:filter-chain-map>
+  </bean>-->
+
+
+
+  <!--<security:http pattern="/login2/**">-->
+    <!--<security:custom-filter ref="authenticationFilter" before="BASIC_AUTH_FILTER"/>-->
+  <!--</security:http>-->
+
+  <security:http use-expressions="true">
+    <security:intercept-url pattern="/rest/**" access="permitAll"/>
+    <security:intercept-url pattern="/admin/**" access="hasAnyRole('A')" />
+    <security:intercept-url pattern="/psy/login/" access="isAnonymous()"/>
+    <security:intercept-url pattern="/login/" access="isAnonymous()"/>
+    <security:intercept-url pattern="/register/**" access="isAnonymous()"/>
+    <security:intercept-url pattern="/register/register.html" access="isAnonymous()"/>
+    <security:intercept-url pattern="/VAADIN/**" access="permitAll"/>
+    <security:intercept-url pattern="/**" access="permitAll"/>
+    <security:custom-filter ref="authenticationFilter" before="BASIC_AUTH_FILTER"/>
+
+    <security:form-login login-page="/index.html#/login" authentication-failure-url="/index.html#/login?error=true"/>
+    <security:logout invalidate-session="true" delete-cookies="true" logout-success-url="/"/>
+    <security:form-login login-page="/index.html#/login" authentication-failure-url="/index.html#/login?error=true"/>
+    <security:intercept-url pattern="/**" access="permitAll"/>
+
+  </security:http>
+
+  <bean id="authenticationFilter" class="by.vbalanse.servlet.MyNewFilter">
+  </bean>
+
+<!--
+  <bean id="authenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+    <property name="defaultFailureUrl" value="/login2/login.html?error=true"/>
+  </bean>
+
+-->
+<!--
+  <bean id="authenticationSuccessHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+    &lt;!&ndash;<property name="defaultTargetUrl" value="/views"/>&ndash;&gt;
+  </bean>
+-->
+</beans>

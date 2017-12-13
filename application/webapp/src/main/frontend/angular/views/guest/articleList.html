@@ -1,0 +1,49 @@
+<div class="main_content">
+  <div ng-include="'angular/views/guest/mainMenu.html'"/>
+  <div ng-include="'angular/views/guest/rightBlock.html'"/>
+
+  <div class="article-list vb-center-block">
+    <div class="article" ng-repeat="article in articles">
+      <div class="caption">
+        <div class="article-date">Опубликована {{article.date}}&nbsp;&nbsp;  <i class="fontelloicon fontelloicon-user"></i> Автор <a
+            href="/#author?userId={{article.author.id}}"><i><span ng-show="toBoolean(article.author.firstName)">{{article.author.firstName}} {{article.author.lastName}}</span></i><span
+            ng-show="!toBoolean(article.author.firstName)">{{article.author.email}}</span></i></a></div>
+        <a class="article-title" href="#/articleGuest?id={{article.id}}">{{article.title}}</a></h4>
+        <div class="tags" data-ng-show="toBoolean(article.tags)">
+        <!--<div class="tags" data-ng-show="article.tags.length > 0">-->
+          <i style="margin-right: 5px;" class="glyphicon glyphicon-tags"></i>
+
+          <div ng-repeat="tag in article.tags" style="display: inline;">
+            <a href="#" style="font-style: italic;">{{tag.title}}</a>
+            <i ng-show="($index+1) < article.tags.length" style="margin-right: 5px;">,</i>
+            <!--<a href="#">Дети</a>
+            <i style="margin-right: 5px;">,</i>
+            <a href="#">Отношения</a>-->
+          </div>
+        </div>
+      </div>
+      <!--<img class="img-responsive" src="http://placehold.it/1400x300" alt="">-->
+
+      <div class="article-content" ng-bind-html="article.text">
+      </div>
+      <div>
+        <div class="ratings">
+          <a href="#/articleGuest?id={{article.id}}&comments=1" class="pull-right">Комментариев: {{article.countOfComments}}</a>
+
+          <p>
+            <span class="glyphicon glyphicon-thumbs-up"></span><span class="numbers">1000</span>
+            <span class="glyphicon glyphicon-thumbs-down"></span><span class="numbers">300</span>
+            <!--<span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star"></span>
+            <span class="glyphicon glyphicon-star-empty"></span>
+            4.0 stars-->
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

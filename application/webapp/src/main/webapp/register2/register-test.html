@@ -1,0 +1,395 @@
+<!doctype html>
+<html ng-app="registerApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../lib/bootstrap.min2.css">
+    <link rel="stylesheet" href="../css/prod/styles.css">
+    <link rel="stylesheet" href="../css/fontello/fontello.css">
+    <link rel="stylesheet" type="text/css" href="../lib/ng-grid2.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/xeditable.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/ngDialog/ngDialog.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/ngDialog/ngDialog-theme-default.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/ngDialog/ngDialog-theme-flat.css"/>
+    <link rel="stylesheet" type="text/css" href="../lib/fileinput/css/fileinput.css"/>
+</head>
+<body>
+<script src="../lib/jquery.min.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/jquery.validate.js"></script>
+<!--
+<script src="angular-1.2.22.js"></script>
+<script src="angular-animate-1.2.22.js"></script>
+-->
+<script src="../lib/angular.min2.js"></script>
+<script src="../lib/angular-resource.js"></script>
+<script src="../lib/ng-grid.debug.js"></script>
+<script src="../lib/xeditable.js"></script>
+<script src="../lib/angular-mocks.js"></script>
+<script src="../lib/fileinput/js/fileinput.js"></script>
+<script src="../lib/angular-file-upload.js"></script>
+<script type="text/ng-template" id="firstDialog">
+    <div class="ngdialog-message" style="overflow-y: auto !important;height: 400px;">
+        <form>
+            <!--<div class="row">-->
+            <div class="col-md-12 col-sm-12">
+                <label for="dimension_title">Программа обучения</label>
+
+                <div class="form-group" ng-class="{'has-error': form.dimension_title.$invalid && submitted}">
+                    <input type="text" class="form-control style_2" id="dimension_title" name="dimension_title"
+                           ng-model="dimension.name"
+                           ng-model-options="{updateOn: 'blur'}" placeholder="Программа обучения" required>
+                    <span class="input-icon"><i class="icon-user"></i></span>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <label for="dimension_year_start">Год начала обучения</label>
+
+                <div class="form-group" ng-class="{'has-error': form.dimension_year_start.$invalid && submitted}">
+                    <input type="text" class="form-control style_2" id="dimension_year_start"
+                           name="dimension_year_start"
+                           ng-model="dimension.yearStart"
+                           ng-model-options="{updateOn: 'blur'}" placeholder="Год начала обучения" required>
+                    <span class="input-icon"><i class="icon-calendar-1"></i></span>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <label for="dimension_year_start">Год окончания обучения</label>
+
+                <div class="form-group" ng-class="{'has-error': form.dimension_year_start.$invalid && submitted}">
+                    <input type="text" class="form-control style_2" id="dimension_year_finish"
+                           name="dimension_year_finish"
+                           ng-model="dimension.yearFinish"
+                           ng-model-options="{updateOn: 'blur'}" placeholder="Год окончания обучения" required>
+                    <span class="input-icon"><i class="icon-calendar-1"></i></span>
+                </div>
+            </div>
+            <input id="input-1" type="file" class="file" multiple>
+            <!--    </div>-->
+        </form>
+        <h2>Native Angular.js solution</h2>
+
+    </div>
+    <div class="ngdialog-buttons mt">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="next()">►</button>
+    </div>
+</script>
+<script type="text/ng-template" id="secondDialog">
+    <div class="ngdialog-message">
+        <h2>And even more!</h2>
+        <ul class="mt">
+            <li>Load your templates as strings, ng-template tags or html partials</li>
+            <li>ngDialog.js is < 2kb when minified!</li>
+            <li>It has simple, extendable and elegant API ;)</li>
+        </ul>
+        <div class="mt">Spread a word about it:</div>
+    </div>
+    <div class="mt">
+        <a href="http://twitter.com/home?status=ngDialog.js - modal windows and popups provider for Angular.js applications, via @likeastore!+http://likeastore.github.io/ngDialog/"
+           class="action-btn" ng-like>Tweet</a>
+        <a href="http://www.facebook.com/share.php?u=http://likeastore.github.io/ngDialog" class="action-btn" ng-like>Like</a>
+        <a href="https://github.com/likeastore/ngDialog#ngdialog" class="action-btn read" target="_blank">Read docs</a>
+    </div>
+</script>
+<script src="../lib/ngDialog.js"></script>
+
+<script src="register.js"></script>
+
+<div class="container" ng-controller="registerController">
+<div class="row">
+<div class="col-md-9" style="margin-bottom: 40px">
+
+<h3>Upload queue</h3>
+<p>Queue length: {{ uploader.queue.length }}</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th width="50%">Name</th>
+        <th ng-show="uploader.isHTML5">Size</th>
+        <th ng-show="uploader.isHTML5">Progress</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in uploader.queue">
+        <td><strong>{{ item.file.name }}</strong></td>
+        <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+        <td ng-show="uploader.isHTML5">
+            <div class="progress" style="margin-bottom: 0;">
+                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+            </div>
+        </td>
+        <td class="text-center">
+            <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+            <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+            <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+        </td>
+        <td nowrap>
+            <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                <span class="glyphicon glyphicon-upload"></span> Upload
+            </button>
+            <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+            </button>
+            <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                <span class="glyphicon glyphicon-trash"></span> Remove
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<input id="input-2" type="file" class="file" nv-file-select="" uploader="uploader" multiple>
+<div class="col-md-4">
+    <h4>No sit debitis meliore postulant, per ex prompta alterum sanctus?</h4>
+
+    <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores
+        id. No sit debitis meliore postulant.</p>
+    <ul id="contact-info">
+        <li><i class="icon-phone"></i> + 61 (2) 8093 3400</li>
+        <li><i class="icon-phone"></i> + 61 (2) 8093 3402</li>
+        <li><i class=" icon-email"></i> <a href="#">info@domain.com</a></li>
+    </ul>
+    <h4>No sit debitis meliore postulant, per ex prompta alterum sanctus?</h4>
+
+    <p>Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores
+        id. No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.</p>
+
+    <hr>
+    <a href="#" class="button_medium_outline">Browse Courses</a>
+
+</div>
+
+<div class="col-md-8">
+<div class=" box_style_2">
+<span class="tape"></span>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Личная информация</h3>
+    </div>
+</div>
+<div id="message-apply" style="display: none;">
+    <div class="error_message">Необходимо ввести фамилию.</div>
+</div>
+<table class="table table-bordered table-hover table-condensed">
+    <tr style="font-weight: bold">
+        <td style="width:35%">Name</td>
+        <td style="width:20%">Status</td>
+        <td style="width:20%">Group</td>
+        <td style="width:25%">Edit</td>
+    </tr>
+    <tr ng-repeat="user in users">
+        <td>
+            <!-- editable username (text with validation) -->
+        <span editable-text="user.name" e-name="name" e-form="rowform" onbeforesave="checkName($data, user.id)"
+              e-required>
+          {{ user.name || 'empty' }}
+        </span>
+        </td>
+        <td>
+            <!-- editable status (select-local) -->
+        <span editable-select="user.status" e-name="status" e-form="rowform"
+              e-ng-options="s.value as s.text for s in statuses">
+          {{ showStatus(user) }}
+        </span>
+        </td>
+        <td>
+            <!-- editable group (select-remote) -->
+        <span editable-select="user.group" e-name="group" onshow="loadGroups()" e-form="rowform"
+              e-ng-options="g.id as g.text for g in groups">
+          {{ showGroup(user) }}
+        </span>
+        </td>
+        <td style="white-space: nowrap">
+            <!-- form -->
+            <form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible"
+                  class="form-buttons form-inline" shown="inserted == user">
+                <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                    save
+                </button>
+                <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()"
+                        class="btn btn-default">
+                    cancel
+                </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+                <button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                <button class="btn btn-danger" ng-click="removeUser($index)">del</button>
+            </div>
+        </td>
+    </tr>
+</table>
+<button class="btn btn-default" ng-click="addUser()">Add row</button>
+<div class="gridStyle" ng-grid="gridOptions">
+</div>
+{{educationList}}
+<form method="post" id="registerForm" name="$parent.registerForm">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <label for="name" class="error" style="display: none;">Поле обязательное.</label>
+
+            <div class="form-group" ng-class="{'has-error': form.username.$invalid && submitted}">
+                <input type="text" class="form-control style_2" id="name" name="name"
+                       ng-model="psychologist.userEntity.firstName"
+                       ng-model-options="{updateOn: 'blur'}" placeholder="Имя" required>
+                <span class="input-icon"><i class="icon-user"></i></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <label for="lastname" class="error" style="display: none;">Поле обязательное.</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control style_2" id="lastname"
+                       ng-model="psychologist.userEntity.lastName"
+                       name="lastname" placeholder="Фамилия" required>
+                <span class="input-icon"><i class="icon-user"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <input type="email" id="email" name="email" ng-model="psychologist.userEntity.email"
+                       class="form-control style_2"
+                       placeholder="Введите Email">
+                <span class="input-icon"><i class="icon-email"></i></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <input type="text" id="phone" name="phone" ng-model="psychologist.phone" class="form-control style_2"
+                       placeholder="Введите телефон">
+                <span class="input-icon"><i class="icon-phone"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <div class="styled-select">
+                    <select class="form-control" ng-model="psychologist.city"
+                            ng-options="city.title for city in cities">
+                        <option value="" selected="">Выберите Ваш город</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <div class="styled-select">
+                    <select class="form-control" name="gender" id="gender" ng-model="psychologist.gender">
+                        <option value="" selected="">Выберите ваш пол</option>
+                        <option value="Male">Мужской</option>
+                        <option value="Female">Женский</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <div class="styled-select">
+                    <select class="form-control" name="education" id="education" ng-model="psychologist.education">
+                        <option value="" selected="">Выберите Ваш уровень образования</option>
+                        <option value="Less than high school">Высшее психологическое</option>
+                        <option value="High school diploma or equivalent">Высшее медицинское</option>
+                        <option value="Some college no degree">Кандидат</option>
+                        <option value="Bachelor degree">Бакалавр</option>
+                        <option value="Doctoral or professional degree">Доктор или профессор</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <label for="age" class="error" style="display: none;">Поле обязательное.</label>
+
+            <div class="form-group">
+                <input type="number" name="age" id="age" class="form-control" ng-model="psychologist.age"
+                       placeholder="Возраст">
+                <span class="input-icon"><i class="icon-user"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h3>Контактные данные</h3>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <label for="skype" class="error" style="display: none;">Поле обязательное.</label>
+
+            <div class="form-group" ng-class="{'has-error': form.username.$invalid && submitted}">
+                <input type="text" class="form-control style_2" id="skype" name="skype" ng-model="psychologist.skype"
+                       ng-model-options="{updateOn: 'blur'}" placeholder="Skype" required>
+                <span class="input-icon"><i class="icon-user"></i></span>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <label for="address" class="error" style="display: none;">Поле обязательное.</label>
+
+            <div class="form-group">
+                <input type="text" class="form-control style_2" id="address" ng-model="psychologist.address"
+                       name="address" placeholder="Адрес" required>
+                <span class="input-icon"><i class="icon-user"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h3>Ваши данные о практике</h3>
+
+    <p>Какой курс вам интересен? <a href="#">Просмотреть курсы</a>.</p>
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <div class="form-group">
+                <div class="styled-select">
+                    <select class="form-control" ng-model="therapyWay"
+                            ng-options="therapyWayIn.title for therapyWayIn in therapyWays">
+                        <option value="" selected="">Выберите Ваше направление работы</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <textarea rows="5" id="message" name="message" ng-model="message" class="form-control"
+                          placeholder="Дополнительная информация" style="height:150px;"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" id="verify" ng-model="verify" class=" form-control"
+                       placeholder="Вы человек? 3 + 1 =">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group pull-right">
+                <button type="submit" class=" button_subscribe_green" ng-click="register()" id="submit-apply">Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+<script src="../js/jquery.validate.js"></script>
+<script src="../js/validate.js"></script>
+</body>
+</html>

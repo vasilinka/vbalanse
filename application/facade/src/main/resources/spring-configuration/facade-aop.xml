@@ -1,0 +1,54 @@
+<!--
+  ~ This Learning Management System (“Software”) is the exclusive and sole property of Baja Education. Inc. (“Baja”).
+  ~ Baja has the sole rights to copy the software, create derivatives or modified versions of it, distribute copies
+  ~ to End Users by license, sale or otherwise. Anyone exercising any of these exclusive rights which also includes
+  ~ indirect copying  such as unauthorized translation of the code into a different programming language without
+  ~ written explicit permission from Baja is an infringer and subject to liability for damages or statutory fines.
+  ~ Interested parties may contact bpozos@gmail.com.
+  ~
+  ~ (c) 2012 Baja Education
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                           http://www.springframework.org/schema/task
+                           http://www.springframework.org/schema/task/spring-task-3.0.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!--<context:annotation-config/>-->
+
+  <aop:aspectj-autoproxy/>
+
+  <task:annotation-driven />
+
+  <!--<util:properties id="applicationProps" location="spring-properties/*.properties" />-->
+ <!-- <context:property-placeholder properties-ref="applicationProps" />-->
+  <!--<bean id="demoServiceXmlConfig" class="by.vbalanse.facade.mail.MailingTask" />-->
+
+  <!--<task:scheduled-tasks>-->
+    <!--<task:scheduled ref="demoServiceXmlConfig" method="run" cron="#{applicationProps['cron.expression']}"></task:scheduled>-->
+  <!--</task:scheduled-tasks>-->
+
+  <aop:config>
+    <aop:pointcut id="facadePointcuts"
+                  expression="execution(* by.vbalanse.facade..*Facade.*(..))"/>
+
+    <aop:advisor order="0" advice-ref="transactionAdvice" pointcut-ref="facadePointcuts"/>
+    <!--<aop:advisor order="1" advice-ref="transactionAdvice2" pointcut-ref="facadePointcuts"/>-->
+  </aop:config>
+
+  <tx:annotation-driven order="0" transaction-manager="transactionManager"/>
+
+</beans>

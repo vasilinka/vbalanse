@@ -1,0 +1,13 @@
+<div id="reviews-carousel" class="carousel slide carousel-fade">
+    {{loadCarousel()}}
+    <div class="carousel-inner">
+        <div class="item" ng-class="{active: $first}" data-ng-repeat="item in feedBacks">
+            <div class="review">{{item.message}}</div>
+            <div class="author">{{item.firstName}}</div>
+        </div>
+    </div>
+    <ol class="carousel-indicators">
+        <li data-target="#reviews-carousel" data-slide-to="{{$index}}" ng-class="{active: $first}"
+            data-ng-repeat="item in feedBacks"></li>
+    </ol>
+</div>

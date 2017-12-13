@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName">
+
+  <!--<bean id="abstractDAO" abstract="true" class="by.vbalanse.dao.common.jpa.AbstractDaoImpl">
+    &lt;!&ndash;<property name="sessionFactory" ref="sessionFactory"/>&ndash;&gt;
+    <property name="entityManager" ref="entityManager"/>
+
+  </bean>-->
+
+</beans>

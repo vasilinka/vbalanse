@@ -1,0 +1,46 @@
+<!doctype html>
+<html ng-app="exampleApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/prod/styles.css">
+</head>
+<body>
+<script src="../js/jquery.js"></script>
+<script src="../js/bootstrap.js"></script>
+<!--
+<script src="angular-1.2.22.js"></script>
+<script src="angular-animate-1.2.22.js"></script>
+-->
+<script src="../test/angular.js"></script>
+<script src="../test/angular-animate.js"></script>
+<script src="../lib/ui-bootstrap-tpls-0.11.0.js"></script>
+<script src="../js/angular-resource-1.2.3.js"></script>
+<script src="../js/angular-route-1.2.3.js"></script>
+<script src="../js/angular-cookies-1.2.3.js"></script>
+<!--<script src="../login.js"></script>-->
+<script src="psy.js"></script>
+<script src="../js/config.js"></script>
+<alert class="margins" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+<!--
+<div class="alert alert-warning alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</div>
+-->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#">Я прекрасный</a></li>
+    <li role="presentation"><a href="../common/#articleCreate">Создать статью</a></li>
+    <li role="presentation"><a href="#">Добавить регалий</a></li>
+</ul>
+<div>
+    <!--Placeholder for vies -->
+    <div data-ng-view=""></div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,434 @@
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  12.5% {
+    -webkit-transform: translateX(-6px) rotateY(-5deg);
+    transform: translateX(-6px) rotateY(-5deg);
+  }
+
+  37.5% {
+    -webkit-transform: translateX(5px) rotateY(4deg);
+    transform: translateX(5px) rotateY(4deg);
+  }
+
+  62.5% {
+    -webkit-transform: translateX(-3px) rotateY(-2deg);
+    transform: translateX(-3px) rotateY(-2deg);
+  }
+
+  87.5% {
+    -webkit-transform: translateX(2px) rotateY(1deg);
+    transform: translateX(2px) rotateY(1deg);
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  12.5% {
+    -webkit-transform: translateX(-6px) rotateY(-5deg);
+    transform: translateX(-6px) rotateY(-5deg);
+  }
+
+  37.5% {
+    -webkit-transform: translateX(5px) rotateY(4deg);
+    transform: translateX(5px) rotateY(4deg);
+  }
+
+  62.5% {
+    -webkit-transform: translateX(-3px) rotateY(-2deg);
+    transform: translateX(-3px) rotateY(-2deg);
+  }
+
+  87.5% {
+    -webkit-transform: translateX(2px) rotateY(1deg);
+    transform: translateX(2px) rotateY(1deg);
+  }
+
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.loginContainer {
+  width: 250px;
+  margin: 50px auto;
+  -webkit-perspective: 600px;
+  -ms-perspective: 600px;
+  perspective: 600px;
+}
+
+.box-shadow {
+  -webkit-box-shadow: 0 12px 30px darkgrey;
+  box-shadow: 0 12px 30px darkgrey;
+}
+
+.shake {
+  -webkit-animation: shake 400ms ease-in-out;
+  animation: shake 400ms ease-in-out;
+}
+
+.message {
+  margin-top: 60px;
+}
+
+label.error :not(:empty) {
+  min-height: 25px;
+}
+
+label.error {
+  font-size: 11px;
+  position: relative;
+  /*top:-28px;
+  right:-15px;*/
+  z-index: 9;
+  /*	min-height:25px;*/
+  /*	line-height:25px;*/
+  background-color: #e34f4f;
+  color: #fff;
+  font-weight: 600;
+  padding: 0 6px;
+}
+
+label.error:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 6px 6px 0;
+  border-color: transparent #e34f4f;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -6px;
+  left: 20%;
+}
+
+.input-icon {
+  position: absolute;
+  right: 7px;
+  top: 7px;
+  width: 32px;
+  height: 24px;
+  background-color: #fff;
+  text-align: right;
+  border-left: 1px solid #ececec;
+}
+
+.input-icon i {
+  color: #ccc;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.form-group {
+  position: relative;
+  clear: both;
+}
+
+.gridStyle {
+  border: 1px solid rgb(212, 212, 212);
+  width: 400px;
+  height: 300px
+}
+
+.glyphicon-folder-open {
+  padding-right: 3px;
+}
+
+.test {
+  -webkit-animation: myfirst 5s; /* Chrome, Safari, Opera */
+  animation: myfirst 5s;
+  /*-webkit-animation-iteration-count: infinite;*/
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes myfirst {
+  from {
+    background: red;
+  }
+  to {
+    background: yellow;
+  }
+}
+
+/* Standard syntax */
+@keyframes myfirst {
+  from {
+    background: red;
+  }
+  to {
+    background: yellow;
+  }
+}
+
+.yellow {
+  background: yellow;
+}
+
+#my-element.ng-hide-add {
+  display: block !important;
+  background: red;
+  transition: background 1s;
+}
+
+#my-element.ng-hide-add.ng-hide-add-active {
+  background: yellow;
+}
+
+/*
+#my-element.ng-hide-remove {
+  display:block !important;
+  */
+/*background: yellow;
+  transition: background 1s;*//*
+
+}
+#my-element.ng-hide-remove.ng-hide-remove-active {
+  background: red;
+}*/
+
+.margins {
+  margin: 10px;
+}
+
+.menu-item {
+  /*border-bottom: 1px solid black;*/
+  /*height: 70px;*/
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+
+.inlineImage {
+  margin: 0 auto;
+  /*display: table;*/
+  /*padding: 5px;*/
+  text-align: center;
+  vertical-align: middle;
+  margin-left: 7px;
+  /*padding-top: 3px;*/
+  /*padding-bottom: 3px;*/
+  /*border: 1px solid black;*/
+  /* display: inline-block;*/
+}
+
+.ratings {
+  padding-right: 10px;
+  padding-left: 10px;
+  color: #d17581;
+  margin-top: 15px;
+}
+
+.ratings a {
+  color: #d17581;
+}
+
+.ratings .numbers {
+  color: grey;
+  font-size: 12px;
+}
+
+.ratings .numbers:before {
+  content: " ";
+}
+
+.inlineImage img {
+  width: 50px;
+  clear: both;
+  opacity: 0.75;
+  /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";*/
+}
+
+.fillSvg {
+  fill: #ff0000;
+  stroke-width: 6;
+  stroke: #fff;
+
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  transition: .3s;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.menu-item {
+  /*background-color: #e1edf7;*/
+}
+
+.menu-line {
+  float: left;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*background-color: rgba(0,0,0,0.5);*/
+  /*height: 76px;*/
+}
+
+/*
+.line-red .inlineImage img {
+  -webkit-filter: opacity(0.3);
+}
+*/
+
+.imageHover img {
+  /*-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";*/
+  opacity: 0.3;
+}
+
+.line-red {
+  background-color: #d67f7f;
+}
+
+#topMenu {
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+#bs-example-navbar-collapse-1 {
+  position: static;
+}
+
+.search {
+
+}
+
+.article {
+  display: block;
+  padding: 4px 10px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+.article-title {
+  font-size: 26px;
+}
+
+.article-date {
+  color: grey;
+}
+
+.article-list .article .tags a {
+  font-style: italic;
+  font-size: 12px;
+  color: grey;
+}
+
+.article .caption-full {
+  padding: 9px;
+  color: #333;
+}
+
+.article img {
+  padding-top: 5px;
+
+}
+
+/*.advert-block {
+  position: fixed;
+  width: 260px;
+  right: 0;
+}*/
+
+@media (min-width: 1024px) {
+  .similar-block {
+    position: absolute;
+    width: 300px;
+    right: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .similar-block {
+    display: none;
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.main_content {
+  position: relative;
+  min-width: 1024px;
+  max-width: 1440px;
+  background-color: white;
+  padding-top: 20px;
+  margin: 0 auto 0;
+}
+
+.logged-menu .icon-my {
+  font-size: 40px;
+}
+
+.logged-menu {
+  width: 140px;
+}
+
+.menu-item .inlineImage a {
+  font-size: 12px;
+}
+
+.article-edit .btn-group {
+  display: block;
+}
+
+.article-edit .btn-group .btn {
+  float: none;
+
+}
+
+.article-edit h2 {
+  color: rgb(119, 119, 119)
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+/*
+  margin: 2px;
+  padding: 0 5px;
+*/
+/*  display: inline-block;*/
+  /*float: left;*/
+  font: 14px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  height: 26px;
+  line-height: 25px;
+  border: 1px solid #acacac;
+  position: relative;
+  border-radius: 3px;
+  background: -webkit-linear-gradient(top,#f0f9ff 0,#cbebff 47%,#a1dbff 100%);
+  background: linear-gradient(to bottom,#f0f9ff 0,#cbebff 47%,#a1dbff 100%);
+  background-clip: padding-box;
+}
+
+.spinner {
+  /*todo: scss for parse padding if it is and set it as variable value, now workarount for spin.js as body has margin-top 50px */
+  margin-top: 45px;
+  margin-left: 5px;
+
+}

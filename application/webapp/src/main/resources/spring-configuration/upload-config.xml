@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+       ">
+  <context:component-scan base-package="by.vbalanse.servlet"/>
+  <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+  <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">-->
+    <!--<property name="useSuffixPatternMatch" value="true"/>-->
+    <property name="mappings">
+      <map>
+        <entry key="/upload" value-ref="singleFileUploadServlet"/>
+        <entry key="/ckupload" value-ref="ckEditorUploadServlet"/>
+        <entry key="/upload-jquery" value-ref="jQueryUploadServlet"/>
+      </map>
+    </property>
+  </bean>
+
+  <bean id="singleFileUploadServlet"
+        class="by.vbalanse.servlet.upload.LMSSingleFileUploadServlet"/>
+
+  <bean id="jQueryUploadServlet"
+        class="by.vbalanse.servlet.upload.JqueryUploadServlet"/>
+
+  <bean id="ckEditorUploadServlet"
+        class="by.vbalanse.servlet.upload.CkEditorUploadServlet"/>
+
+</beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This Learning Management System (“Software”) is the exclusive and sole property of Baja Education. Inc. (“Baja”).
+  ~ Baja has the sole rights to copy the software, create derivatives or modified versions of it, distribute copies
+  ~ to End Users by license, sale or otherwise. Anyone exercising any of these exclusive rights which also includes
+  ~ indirect copying  such as unauthorized translation of the code into a different programming language without
+  ~ written explicit permission from Baja is an infringer and subject to liability for damages or statutory fines.
+  ~ Interested parties may contact bpozos@gmail.com.
+  ~
+  ~ (c) 2012 Baja Education
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+       default-autowire="byName">
+
+  <bean id="mailingTask" class="by.vbalanse.facade.mail.MailingTask"/>
+
+  <bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="mailingTask"/>
+    <property name="targetMethod" value="run"/>
+    <property name="concurrent" value="false"/>
+  </bean>
+
+  <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+    <property name="jobDetail" ref="jobDetail"/>
+    <!-- starts in 60 seconds after spring context initialization -->
+    <property name="startDelay" value="10000"/>
+    <!-- repeat every 10 minutes -->
+    <property name="repeatInterval" value="120000"/>
+  </bean>
+
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="simpleTrigger"/>
+      </list>
+    </property>
+  </bean>
+
+</beans>

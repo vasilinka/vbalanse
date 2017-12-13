@@ -1,0 +1,60 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="show_sql">false</property>
+    <property name="format_sql">false</property>
+    <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/vbalanse</property>
+    <property name="hibernate.connection.useUnicode">true</property>
+    <property name="hibernate.connection.characterEncoding">UTF-8</property>
+    <property name="hibernate.connection.charSet">UTF-8</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
+    <property name="hbm2ddl.auto">validate</property>
+    <property name="connection.autocommit">false</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+
+    <property name="hibernate.cache.use_second_level_cache">true</property>
+    <!--<property name="hibernate.cache.provider_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>-->
+    <property name="hibernate.cache.use_query_cache">true</property>
+    <property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+
+    <property name="hibernate.max_fetch_depth">2</property>
+    <property name="hibernate.connection.autocommit">false</property>
+    <property name="hibernate.hbm2ddl.auto">validate</property>
+
+    <!--<property name="hibernate.connection.autocommit">false</property>-->
+
+    <!--<mapping package="by.vbalanse.model"/>-->
+    <mapping class="by.vbalanse.model.article.ArticleEntity"/>
+    <mapping class="by.vbalanse.model.article.ArticleCategoryEntity"/>
+    <mapping class="by.vbalanse.model.article.TargetAuditoryEntity"/>
+    <mapping class="by.vbalanse.model.user.RoleEntity"/>
+    <mapping class="by.vbalanse.model.user.UserEntity"/>
+    <mapping class="by.vbalanse.model.psychologist.PsychologistEntity"/>
+    <mapping class="by.vbalanse.model.psychologist.WithWhomWorks"/>
+    <mapping class="by.vbalanse.model.storage.AbstractStorageFileEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageFileAudioEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageFileArchiveEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageFileEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageFileImageEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageFileVideoEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageFolderEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageSubfolderEntity"/>
+    <mapping class="by.vbalanse.model.storage.StorageFileStatusEntity"/>
+
+    <mapping class="by.vbalanse.model.storage.attachment.AbstractAttachmentEntity"/>
+    <mapping class="by.vbalanse.model.storage.attachment.AttachmentContentPageEntity"/>
+    <mapping class="by.vbalanse.model.storage.attachment.AttachmentGroupEntity"/>
+    <mapping class="by.vbalanse.model.storage.attachment.AttachmentAudioEntity"/>
+    <mapping class="by.vbalanse.model.storage.attachment.AttachmentDocumentEntity"/>
+    <mapping class="by.vbalanse.model.storage.attachment.AttachmentFileEntity"/>
+    <mapping class="by.vbalanse.model.storage.attachment.AttachmentImageEntity"/>
+    <mapping class="by.vbalanse.model.storage.attachment.AttachmentVideoEntity"/>
+
+
+  </session-factory>
+</hibernate-configuration>

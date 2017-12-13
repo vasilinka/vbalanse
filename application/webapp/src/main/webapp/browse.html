@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+    function _setReturnData()
+    {
+        window.top.opener['CKEDITOR'].tools.callFunction(parseUrl('CKEditorFuncNum'), 'http://localhost:8081/files//2015/00/CEsLKH1uLTHclsObooLQ.jpg', '');
+        window.top.close();
+        window.top.opener.focus();
+        return true;
+    }
+
+
+    function insertImage() {
+        //window.parent.CKEDITOR.tools.callFunction(1, '');
+    }
+</script>
+<button onclick="_setReturnData()">Click me</button>
+
+</body>
+</html>

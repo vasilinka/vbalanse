@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This Learning Management System (“Software”) is the exclusive and sole property of Baja Education. Inc. (“Baja”).
+  ~ Baja has the sole rights to copy the software, create derivatives or modified versions of it, distribute copies
+  ~ to End Users by license, sale or otherwise. Anyone exercising any of these exclusive rights which also includes
+  ~ indirect copying  such as unauthorized translation of the code into a different programming language without
+  ~ written explicit permission from Baja is an infringer and subject to liability for damages or statutory fines.
+  ~ Interested parties may contact bpozos@gmail.com.
+  ~
+  ~ (c) 2012 Baja Education
+  -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+       xmlns:p="http://www.springframework.org/schema/p"
+    >
+
+  <bean id="dataSource2"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+        p:driverClassName="${jdbc.driver.class}" p:url="${jdbc.connection.url}"
+        p:username="${jdbc.connection.username}" p:password="${jdbc.connection.password}"/>
+
+  <!--<context:component-scan base-package="ma.persistence"/>-->
+
+  <bean id="entityManagerFactory"
+        class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <!--Selects persistence unit -->
+    <property name="persistenceUnitName" value="vbalansePU"/>
+    <property name="dataSource" ref="dataSource2"/>
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="showSql" value="true"/>
+      </bean>
+    </property>
+    <property name="jpaProperties">
+      <props>
+        <prop key="hibernate.dialect">${hibernate.dialect}</prop>
+        <prop key="hibernate.hbm2ddl.auto">update</prop>
+        <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+      </props>
+    </property>
+  </bean>
+
+  <!--<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="jpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>-->
+
+  <!-- We use annotation driven transactions with AspectJ and compile-time weaving -->
+  <!--<tx:annotation-driven mode="aspectj" transaction-manager="transactionManager"/>-->
+
+  <!--<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">-->
+  <!--<property name="dataSource" ref="dataSource2"/>-->
+  <!--<property name="jpaVendorAdapter">-->
+  <!--<bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">-->
+  <!--<property name="generateDdl" value="true"/>-->
+  <!--<property name="showSql" value="false"/>-->
+  <!--</bean>-->
+  <!--</property>-->
+  <!--</bean>-->
+
+
+
+
+  <!--<bean id="clmActivityLogDao"-->
+  <!--class="org.springframework.aop.framework.ProxyFactoryBean">-->
+  <!--<property name="proxyInterfaces">-->
+  <!--<value>com.mitchell.services.technical.claim.dao.ClmActivityLogDao</value>-->
+  <!--</property>-->
+  <!--<property name="interceptorNames">-->
+  <!--<list>-->
+  <!--<value>exceptionInterceptor</value>-->
+  <!--<value>myHibernateInterceptor</value>-->
+  <!--<value>clmActivityLogDaoTarget</value>-->
+  <!--</list>-->
+  <!--</property>-->
+  <!--</bean>-->
+
+  <!--<tx:annotation-driven transaction-manager="transactionManager" />-->
+  <!--<tx:advice id="transactionAdvice2" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="transfer*" propagation="NEVER"/>
+
+      <tx:method name="get*" propagation="SUPPORTS" rollback-for="java.lang.Throwable"/>
+      <tx:method name="find*" propagation="SUPPORTS" rollback-for="java.lang.Throwable"/>
+
+      &lt;!&ndash; fixme: we need to avoid that someway, because where there is no neet to create objectm the transaction shoud not be started &ndash;&gt;
+      <tx:method name="getOrCreate*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      &lt;!&ndash; fixme: we need to avoid that someway, because where there is no neet to create objectm the transaction shoud not be started &ndash;&gt;
+      <tx:method name="findOrCreate*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+
+      <tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="move*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="accept*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="decline*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="synchronize*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+
+      &lt;!&ndash; used in conversation facade &ndash;&gt;
+      &lt;!&ndash; fixme: find mroe beautiful solution&ndash;&gt;
+      <tx:method name="findOnlineModerators*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="findChatMessages*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="leave*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="hide*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="show*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="ban*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="unban*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="block*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="unblock*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+    </tx:attributes>
+  </tx:advice>-->
+
+  <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+
+  <!--<bean id="jobBeanProxy" class="org.springframework.aop.framework.ProxyFactoryBean">-->
+  <!--<property name="target" ref="MyUI"/>-->
+  <!--&lt;!&ndash;<property name="proxyInterfaces"&ndash;&gt;-->
+  <!--&lt;!&ndash;value="com.vaadin.navigator.View, com.vaadin.ui.ComponentContainer"/>&ndash;&gt;-->
+  <!--<property name="interceptorNames" value="openEntityManagerInViewInterceptor"/>-->
+  <!--</bean>-->
+
+  <bean id="openEntityManagerInViewInterceptor"
+        class="org.springframework.orm.jpa.support.OpenEntityManagerInViewInterceptor">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+
+
+</beans>

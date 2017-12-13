@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="1.0">
+  <!--<persistence-unit name="rantzPU">
+    <class>by.vbalanse.model.article.ArticleEntity</class>
+    <class>by.vbalanse.model.article.ArticleCategoryEntity</class>
+    <class>by.vbalanse.model.article.TargetAuditoryEntity</class>
+    <class>by.vbalanse.model.user.RoleEntity</class>
+    <class>by.vbalanse.model.user.UserEntity</class>
+    <class>by.vbalanse.model.psychologist.PsychologistEntity</class>
+    <properties>
+      <property name="toplink.jdbc.driver"
+                class="${jdbc.driver.class}" />
+      <property name="toplink.jdbc.url"
+                class="${jdbc.connection.url}" />
+      <property name="toplink.jdbc.user"
+                class="${jdbc.connection.username}" />
+      <property name="toplink.hibernate.dialect"
+                class="${hibernate.dialect}" />
+
+      <property name="toplink.jdbc.password"
+                class="${jdbc.connection.password}" />
+    </properties>
+  </persistence-unit>
+-->
+    <persistence-unit name="vbalansePU" transaction-type="RESOURCE_LOCAL">
+      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <class>by.vbalanse.model.article.ArticleEntity</class>
+      <class>by.vbalanse.model.article.ArticleCategoryEntity</class>
+      <class>by.vbalanse.model.article.TargetAuditoryEntity</class>
+      <class>by.vbalanse.model.article.DepartmentEntity</class>
+      <class>by.vbalanse.model.content.CommentEntity</class>
+      <class>by.vbalanse.model.user.RoleEntity</class>
+      <class>by.vbalanse.model.user.UserEntity</class>
+      <class>by.vbalanse.model.user.UserInfoKeyValueEntity</class>
+      <class>by.vbalanse.model.psychologist.PsychologistEntity</class>
+      <class>by.vbalanse.model.psychologist.BonusEntity</class>
+      <class>by.vbalanse.model.psychologist.WithWhomWorks</class>
+      <class>by.vbalanse.model.storage.AbstractStorageFileEntity</class>
+      <class>by.vbalanse.model.storage.StorageFileAudioEntity</class>
+      <class>by.vbalanse.model.storage.StorageFileArchiveEntity</class>
+      <class>by.vbalanse.model.storage.StorageFileEntity</class>
+      <class>by.vbalanse.model.storage.StorageFileImageEntity</class>
+      <class>by.vbalanse.model.storage.StorageFileVideoEntity</class>
+      <class>by.vbalanse.model.storage.StorageFolderEntity</class>
+      <class>by.vbalanse.model.storage.StorageSubfolderEntity</class>
+      <class>by.vbalanse.model.storage.StorageFileStatusEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AbstractAttachmentEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AttachmentContentPageEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AttachmentGroupEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AttachmentAudioEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AttachmentDocumentEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AttachmentFileEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AttachmentImageEntity</class>
+      <class>by.vbalanse.model.storage.attachment.AttachmentVideoEntity</class>
+      <class>by.vbalanse.model.storage.embed.EmbedHtmlEntity</class>
+      <class>by.vbalanse.model.template.EmailTemplateEntity</class>
+
+      <class>by.vbalanse.model.geography.CityEntity</class>
+
+      <class>by.vbalanse.model.training.TrainingEntity</class>
+
+      <properties>
+        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+        <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+        <property name="hibernate.connection.url" value="jdbc:mysql://localhost/vbalanse?useUnicode=true&amp;autoReconnect=true" />
+        <property name="hibernate.connection.username" value="root" />
+        <property name="hibernate.connection.password" value="root" />
+        <property name="hibernate.connection.characterEncoding" value="UTF-8"/>
+        <property name="hibernate.connection.useUnicode" value="true"/>
+        <property name="hibernate.connection.charSet" value="UTF-8"/>
+        <!--<property name="javax.persistence.validation.mode" class="CALLBACK"/>-->
+        <property name="hibernate.connection.pool_size" value="1" />
+        <property name="hibernate.connection.autocommit" value="true" />
+        <!--<property name="hibernate.cache.provider_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />-->
+        <property name="hibernate.hbm2ddl.auto" value="update" />
+        <property name="hibernate.show_sql" value="true" />
+        <property name="hibernate.cache.use_query_cache" value="true"/>
+        <property name="hibernate.max_fetch_depth" value="4"/>
+        <property name="hibernate.cache.use_second_level_cache" value="true"/>
+        <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+        <property name="hibernate.enable_lazy_load_no_trans" value="true" />
+        <property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.DefaultNamingStrategy" />
+
+      </properties>
+    </persistence-unit>
+
+</persistence>

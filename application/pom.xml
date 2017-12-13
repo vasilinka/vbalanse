@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2008, Itision Corporation. All Rights Reserved.
+  ~
+  ~ The content of this file is copyrighted by Itision Corporation and can not be
+  ~ reproduced, distributed, altered or used in any form, in whole or in part.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>by.vbalanse.server</groupId>
+    <artifactId>vbalanse-server.parent</artifactId>
+    <version>0.0.0.3-SNAPSHOT</version>
+  </parent>
+  <artifactId>vbalanse-server.application</artifactId>
+  <name>V balanse -Application</name>
+  <version>0.0.0.4-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <scm>
+    <connection>scm:svn:http://svn.vbalanse.by/application/trunk</connection>
+    <developerConnection>scm:svn:http://svn.vbalanse.by/application/trunk</developerConnection>
+    <url>http://svn.vbalanse.by/application/trunk</url>
+  </scm>
+  <modules>
+    <module>model</module>
+    <module>dao</module>
+    <module>facade</module>
+    <module>webapp</module>
+  </modules>
+</project>
+

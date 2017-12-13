@@ -1,0 +1,63 @@
+<!--
+  ~ This Learning Management System (“Software”) is the exclusive and sole property of Baja Education. Inc. (“Baja”).
+  ~ Baja has the sole rights to copy the software, create derivatives or modified versions of it, distribute copies
+  ~ to End Users by license, sale or otherwise. Anyone exercising any of these exclusive rights which also includes
+  ~ indirect copying  such as unauthorized translation of the code into a different programming language without
+  ~ written explicit permission from Baja is an infringer and subject to liability for damages or statutory fines.
+  ~ Interested parties may contact bpozos@gmail.com.
+  ~
+  ~ (c) 2012 Baja Education
+  -->
+
+<beans
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+  <!-- ==================== -->
+  <!-- Transaction handling -->
+  <!-- ==================== -->
+  <!-- Hibernate transaction manager -->
+  <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+    <description>
+      Transaction manager. Binds a Hibernate Session from the specified factory to the thread,
+      potentially allowing for one thread-bound Session per factory. SessionFactoryUtils and HibernateTemplate
+      are aware of thread-bound Sessions and participate in such transactions automatically.
+      Using either of those or going through SessionFactory.getCurrentSession() is required for Hibernate
+      access code that needs to support this transaction handling mechanism.
+    </description>
+    <property name="sessionFactory" ref="sessionFactory"/>
+    <property name="transactionSynchronization" value="1"/>
+    <property name="rollbackOnCommitFailure" value="true"/>
+    <property name="autodetectDataSource" value="false"/>
+  </bean>
+
+  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="transfer*" propagation="NEVER"/>
+
+      <tx:method name="get*" propagation="SUPPORTS" rollback-for="java.lang.Throwable"/>
+      <tx:method name="find*" propagation="SUPPORTS" rollback-for="java.lang.Throwable"/>
+
+      <!-- fixme: we need to avoid that someway, because where there is no neet to create objectm the transaction shoud not be started -->
+      <tx:method name="getOrCreate*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <!-- fixme: we need to avoid that someway, because where there is no neet to create objectm the transaction shoud not be started -->
+      <tx:method name="findOrCreate*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+
+      <tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="merge*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="remove*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="move*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="accept*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="decline*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+      <tx:method name="synchronize*" propagation="REQUIRED" rollback-for="java.lang.Throwable"/>
+
+    </tx:attributes>
+  </tx:advice>
+
+</beans>

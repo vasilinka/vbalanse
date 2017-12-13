@@ -1,0 +1,393 @@
+<html ng-app="exampleApp" class="ng-scope"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style><style>.cke{visibility:hidden;}</style></head><body style="background-color: rgb(226, 226, 226); padding-top: 50px; height: 100%;">
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="js/bootstrap_downloaded.css">
+    <!--<link rel="stylesheet" href="../css/fontello/fontello.css">-->
+    <!--<link rel="stylesheet" href="../js/new/bootstrap-responsive.css">-->
+    <link rel="stylesheet" href="css/prod/styles.css">
+
+    <link rel="stylesheet" href="js/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="js/typeahead.js-bootstrap.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="js/bootstrap-select.min.css.js">
+    <link rel="stylesheet" href="js/ui-select/select2.css">
+    <link rel="stylesheet" href="js/select2.css">
+    <link rel="stylesheet" href="js/selectize/selectize.css">
+
+
+<script src="js/jquery.js"></script>
+<!--<script src="jquery-ui.js"></script>-->
+<script src="js/bootstrap.js"></script>
+<script src="dist/bootstrap-tagsinput.js"></script>
+
+<script src="js/angular.js"></script>
+<!--<script src="angular-animate-1.2.22.js"></script>
+-->
+<script src="js/angular.js"></script>
+<script src="js/bloodhound.js"></script>
+<script src="js/typeahead.jquery.js"></script>
+<script src="js/common_auth.js"></script>
+<script src="angular/services/DataService.js"></script>
+<script src="angular/services/UserService.js"></script>
+<script src="angular/services/ArticleService.js"></script>
+<script src="angular/controllers/ArticleCtrl.js"></script>
+<script src="angular/controllers/ProfileCtrl.js"></script>
+<script src="angular/directive/ckEditor.js"></script>
+<script src="angular/directive/loaddirective.js"></script>
+<script src="angular/directive/vbFormInput.js"></script>
+<!--<script src="test/angular-animate.js"></script>-->
+<script src="js/bootstrap-select.min.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.2.min.js"></script>
+<script src="js/angular-resource.js"></script>
+<script src="js/angular-sanitize.js"></script>
+<script src="js/angular-route.js"></script>
+<script src="js/angular-cookies.js"></script>
+<script src="js/ui-select/select.js"></script>
+<script src="js/selectize/selectize.js"></script>
+<script type="text/javascript" src="VAADIN/widgetsets/vbalanse/ckeditor/ckeditor.js"></script>
+<script src="angular/libraries/elastic-upload/angular-elastic-input.js"></script>
+
+<!--<script src="dist/bootstrap-tagsinput-angular.js"></script>-->
+<!--<script src="assets/app.js"></script>-->
+<!--<script src="../login.js"></script>-->
+<script src="main.js"></script>
+<script src="js/config.js"></script>
+<!-- ngRepeat: alert in alerts -->
+<div id="topMenu" style="">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">V балансе</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left search ng-pristine ng-valid" role="search">
+                    <div class="form-group">
+                        <input id="searchInput" type="text" class="form-control ng-isolate-scope" placeholder="Search" pu-elastic-input="" style="min-width: 200px; max-width: 400px; width: 1px;">
+                    </div>
+                    <button type="submit" class="btn btn-default">Поиск</button>
+                </form>
+                <ul class="nav navbar-nav ng-hide" ng-show="authenticated">
+                    <li><a href="#/article"><i style="margin-right: 5px;" class="glyphicon glyphicon-pencil"></i>Создать статью</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown ng-hide" ng-show="authenticated">
+                        <a href="#" class="dropdown-toggle ng-binding" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/profile">Профиль</a></li>
+                            <li><a href="#">Мои статьи</a></li>
+                            <li><a href="#">Мои сообщения</a></li>
+                            <li class="divider"></li>
+                            <li><a href="j_spring_security_logout">Выйти</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" ng-show="!(authenticated)">
+                        <a ng-show="!(authenticated)" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Логин
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="auth.html">Логин</a></li>
+                            <li><a href="auth.html#/register">Регистрация</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>
+<!-- ngView:  --><div data-ng-view="" style="height: 100vh;" class="ng-scope"><div class="main_content ng-scope">
+
+    <div class="menu-category" style="position: fixed; width: 120px;">
+        <div style="width: 100px; float: left;  margin-left: 10px;">
+            <div class="menu-item clearfix">
+                <div style="width: 5px;  " class="menu-line"></div>
+                <div class="inlineImage" style="">
+                    <img src="icons/relation_black.png">
+                    <a href="">Отношения</a>
+                </div>
+            </div>
+            <div class="menu-item clearfix" style="">
+                <div style="width: 5px;  " class="menu-line"></div>
+                <div class="inlineImage" style="">
+                    <img src="icons/health_black.png">
+                    <a href="">Здоровье</a>
+                </div>
+            </div>
+            <div class="menu-item clearfix" style="">
+                <div style="width: 5px;  " class="menu-line"></div>
+                <div class="inlineImage" style="">
+                    <img src="icons/children_black.png">
+                    <a href="">О&nbsp;детях</a>
+                </div>
+            </div>
+            <div class="menu-item clearfix" style="">
+                <div style="width: 5px;  " class="menu-line"></div>
+                <div class="inlineImage" style="">
+                    <img src="icons/business_tie_black.png">
+                    <a href="">Работа</a>
+                </div>
+            </div>
+            <div class="menu-item clearfix" style="">
+                <div style="width: 5px;  " class="menu-line"></div>
+                <div class="inlineImage" style="">
+                    <img src="icons/face_uncons_black.png">
+                    <a href="">Подсознание</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="similar-block">
+        <!-- ngRepeat: article in articles --><div style="background:#f1f1f1;border: 1px solid #e1e1e1;  margin-bottom: 30px; margin-right: 15px; padding: 10px;" ng-repeat="article in articles" class="ng-scope">
+            <h1>Navbar example</h1>
+
+            <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It
+                includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+
+            <p>
+                <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar »</a>
+            </p>
+        </div><!-- end ngRepeat: article in articles --><div style="background:#f1f1f1;border: 1px solid #e1e1e1;  margin-bottom: 30px; margin-right: 15px; padding: 10px;" ng-repeat="article in articles" class="ng-scope">
+            <h1>Navbar example</h1>
+
+            <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It
+                includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+
+            <p>
+                <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar »</a>
+            </p>
+        </div><!-- end ngRepeat: article in articles --><div style="background:#f1f1f1;border: 1px solid #e1e1e1;  margin-bottom: 30px; margin-right: 15px; padding: 10px;" ng-repeat="article in articles" class="ng-scope">
+            <h1>Navbar example</h1>
+
+            <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It
+                includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+
+            <p>
+                <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar »</a>
+            </p>
+        </div><!-- end ngRepeat: article in articles --><div style="background:#f1f1f1;border: 1px solid #e1e1e1;  margin-bottom: 30px; margin-right: 15px; padding: 10px;" ng-repeat="article in articles" class="ng-scope">
+            <h1>Navbar example</h1>
+
+            <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It
+                includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
+
+            <p>To see the difference between static and fixed top navbars, just scroll.</p>
+
+            <p>
+                <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar »</a>
+            </p>
+        </div><!-- end ngRepeat: article in articles -->
+    </div>
+
+    <div class="article-list" style=" margin-left: 120px;margin-right: 300px;">
+        <!-- ngRepeat: article in articles --><div class="article ng-scope" ng-repeat="article in articles">
+            <div class="caption">
+                <div class="article-date">вчера в 16:09</div>
+                <a class="article-title" href="#">Самая лучшая статья по психологии</a>
+                <div class="tags"><i style="margin-right: 5px;" class="glyphicon glyphicon-tags"></i>
+                    <a href="#" style="font-style: italic;">Семья</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Дети</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Отношения</a>
+                </div>
+            </div>
+            <img class="img-responsive" src="http://placehold.it/1400x300" alt="">
+
+            <div class="caption-full">
+                <p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp
+                    - http://bootsnipp.com</a>.</p>
+
+                <p>Want to make these reviews work? Check out
+                    <strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this
+                        building a review system tutorial</a>
+                    </strong>over at maxoffsky.com!</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            <div>
+                <div class="ratings">
+                    <a href="#" class="pull-right">3 комментария</a>
+
+                    <p>
+                        <span class="glyphicon glyphicon-thumbs-up"></span><span class="numbers">1000</span>
+                        <span class="glyphicon glyphicon-thumbs-down"></span><span class="numbers">300</span>
+                        <!--<span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 stars-->
+                    </p>
+                </div>
+            </div>
+        </div><!-- end ngRepeat: article in articles --><div class="article ng-scope" ng-repeat="article in articles">
+            <div class="caption">
+                <div class="article-date">вчера в 16:09</div>
+                <a class="article-title" href="#">Самая лучшая статья по психологии</a>
+                <div class="tags"><i style="margin-right: 5px;" class="glyphicon glyphicon-tags"></i>
+                    <a href="#" style="font-style: italic;">Семья</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Дети</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Отношения</a>
+                </div>
+            </div>
+            <img class="img-responsive" src="http://placehold.it/1400x300" alt="">
+
+            <div class="caption-full">
+                <p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp
+                    - http://bootsnipp.com</a>.</p>
+
+                <p>Want to make these reviews work? Check out
+                    <strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this
+                        building a review system tutorial</a>
+                    </strong>over at maxoffsky.com!</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            <div>
+                <div class="ratings">
+                    <a href="#" class="pull-right">3 комментария</a>
+
+                    <p>
+                        <span class="glyphicon glyphicon-thumbs-up"></span><span class="numbers">1000</span>
+                        <span class="glyphicon glyphicon-thumbs-down"></span><span class="numbers">300</span>
+                        <!--<span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 stars-->
+                    </p>
+                </div>
+            </div>
+        </div><!-- end ngRepeat: article in articles --><div class="article ng-scope" ng-repeat="article in articles">
+            <div class="caption">
+                <div class="article-date">вчера в 16:09</div>
+                <a class="article-title" href="#">Самая лучшая статья по психологии</a>
+                <div class="tags"><i style="margin-right: 5px;" class="glyphicon glyphicon-tags"></i>
+                    <a href="#" style="font-style: italic;">Семья</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Дети</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Отношения</a>
+                </div>
+            </div>
+            <img class="img-responsive" src="http://placehold.it/1400x300" alt="">
+
+            <div class="caption-full">
+                <p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp
+                    - http://bootsnipp.com</a>.</p>
+
+                <p>Want to make these reviews work? Check out
+                    <strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this
+                        building a review system tutorial</a>
+                    </strong>over at maxoffsky.com!</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            <div>
+                <div class="ratings">
+                    <a href="#" class="pull-right">3 комментария</a>
+
+                    <p>
+                        <span class="glyphicon glyphicon-thumbs-up"></span><span class="numbers">1000</span>
+                        <span class="glyphicon glyphicon-thumbs-down"></span><span class="numbers">300</span>
+                        <!--<span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 stars-->
+                    </p>
+                </div>
+            </div>
+        </div><!-- end ngRepeat: article in articles --><div class="article ng-scope" ng-repeat="article in articles">
+            <div class="caption">
+                <div class="article-date">вчера в 16:09</div>
+                <a class="article-title" href="#">Самая лучшая статья по психологии</a>
+                <div class="tags"><i style="margin-right: 5px;" class="glyphicon glyphicon-tags"></i>
+                    <a href="#" style="font-style: italic;">Семья</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Дети</a>
+                    <i style="margin-right: 5px;">,</i>
+                    <a href="#">Отношения</a>
+                </div>
+            </div>
+            <img class="img-responsive" src="http://placehold.it/1400x300" alt="">
+
+            <div class="caption-full">
+                <p>See more snippets like these online store reviews at <a target="_blank" href="http://bootsnipp.com">Bootsnipp
+                    - http://bootsnipp.com</a>.</p>
+
+                <p>Want to make these reviews work? Check out
+                    <strong><a href="http://maxoffsky.com/code-blog/laravel-shop-tutorial-1-building-a-review-system/">this
+                        building a review system tutorial</a>
+                    </strong>over at maxoffsky.com!</p>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+            <div>
+                <div class="ratings">
+                    <a href="#" class="pull-right">3 комментария</a>
+
+                    <p>
+                        <span class="glyphicon glyphicon-thumbs-up"></span><span class="numbers">1000</span>
+                        <span class="glyphicon glyphicon-thumbs-down"></span><span class="numbers">300</span>
+                        <!--<span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                        4.0 stars-->
+                    </p>
+                </div>
+            </div>
+        </div><!-- end ngRepeat: article in articles -->
+
+
+    </div>
+
+
+</div></div>
+
+
+
+<div style="position:fixed; top:-999px; left:0;"><span style="white-space: pre;"></span></div></body></html>
