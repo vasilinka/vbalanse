@@ -20,8 +20,8 @@
   <packaging>war</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <vaadin.version>7.1.7</vaadin.version>
-    <vaadin.plugin.version>7.0.0</vaadin.plugin.version>
+    <vaadin.version>7.6.6</vaadin.version>
+    <vaadin.plugin.version>7.6.6</vaadin.plugin.version>
   </properties>
   <repositories>
     <repository>
@@ -117,6 +117,10 @@
           <groupId>org.eclipse.jetty</groupId>
           <artifactId>jetty-server</artifactId>
         </exclusion>
+        <exclusion>
+          <groupId>asm</groupId>
+          <artifactId>asm</artifactId>
+        </exclusion>
       </exclusions>
 
     </dependency>
@@ -127,7 +131,7 @@
     <dependency>
       <groupId>cglib</groupId>
       <artifactId>cglib</artifactId>
-      <version>2.2.2</version>
+      <version>3.2.1</version>
     </dependency>
     <dependency>
       <groupId>aopalliance</groupId>
@@ -160,12 +164,12 @@
     <dependency>
       <groupId>org.vaadin.addon</groupId>
       <artifactId>easyuploads</artifactId>
-      <version>7.0.1</version>
+      <version>7.4.10</version>
     </dependency>
     <dependency>
       <groupId>com.wcs.wcslib</groupId>
       <artifactId>wcslib-vaadin-widget-multifileupload</artifactId>
-      <version>1.5</version>
+      <version>1.11</version>
     </dependency>
 
     <dependency>
@@ -430,7 +434,7 @@
   <build>
 
     <plugins>
-      <!--<plugin>
+      <plugin>
         <artifactId>maven-clean-plugin</artifactId>
         <version>2.4.1</version>
         <configuration>
@@ -457,7 +461,7 @@
           <compileReport>true</compileReport>
           <style>OBF</style>
           <strict>true</strict>
-          <runTarget>http://localhost:8080/</runTarget>
+          <runTarget>http://localhost:8080/vbalanse-server.application-webapp-0.0.0.4-SNAPSHOT</runTarget>
         </configuration>
         <executions>
           <execution>
@@ -473,7 +477,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>-->
+      </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

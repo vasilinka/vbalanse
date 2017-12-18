@@ -18,8 +18,8 @@ import java.util.regex.Pattern;
  */
 public class FontelloFinder {
   public static void main(String[] args) throws IOException {
-    FileOutputStream fileOutputStream = new FileOutputStream("E:\\projects\\vbalanse\\application\\webapp\\src\\main\\frontend\\js\\fontello.json");
-    FileInputStream inputFile = new FileInputStream("E:\\projects\\vbalanse\\application\\webapp\\src\\main\\frontend\\css\\fontello\\fontello.css");
+    FileOutputStream fileOutputStream = new FileOutputStream("D:\\projects\\vbalanse\\application\\webapp\\src\\main\\frontend\\js\\fontello.json");
+    FileInputStream inputFile = new FileInputStream("D:\\projects\\vbalanse\\application\\webapp\\src\\main\\frontend\\css\\fontello\\fontello.css");
     String theString2 = IOUtils.toString(inputFile);
     ArrayList<String> strings = new ArrayList<>();
     Matcher matcher = Pattern.compile(".fontelloicon-([a-zA-Z0-9]*):before").matcher(theString2);

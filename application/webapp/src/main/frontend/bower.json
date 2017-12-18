@@ -49,6 +49,18 @@
 
     
   },
+  "overrides": {
+    "outlayer": {
+      "main": [
+        "item.js",
+        "outlayer.js"
+      ]
+    }
+  },
+  "masonry": {
+    "main": ["./dist/masonry.pkgd.js"],
+    "dependencies": {}
+  },
    "resolutions": {
   "angular": "~1.4.1",
   "select2": "~3.x.x"

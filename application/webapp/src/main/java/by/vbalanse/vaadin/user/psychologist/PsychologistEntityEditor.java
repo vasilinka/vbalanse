@@ -59,7 +59,7 @@ public class PsychologistEntityEditor extends VerticalLayoutCaption implements B
     editorFieldGroup.setItemDataSource(psychologistItem);
     editorFieldGroup.setFieldFactory(new FieldGroupFieldFactory() {
       public <T extends Field> T createField(Class<?> dataType, Class<T> fieldType) {
-        T field1 = new DefaultFieldGroupFieldFactory().createField(dataType, fieldType);
+        T field1 = DefaultFieldGroupFieldFactory.get().createField(dataType, fieldType);
         if (field1 instanceof TextField) {
           ((TextField) field1).setNullRepresentation("");
         }
