@@ -3,7 +3,7 @@
  */
 UserService = function ($resource) {
 
-  return $resource('../rest/psy/user/:action', {},
+  return $resource('rest/psy/user/:action', {},
       {
         authenticate: {
           method: 'POST',
