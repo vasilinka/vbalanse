@@ -20,7 +20,7 @@
   <bean id="dataSource2"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource"
         p:driverClassName="${jdbc.driver.class}" p:url="${jdbc.connection.url}"
-        p:username="${jdbc.connection.username}" p:password="${jdbc.connection.password}"/>
+        p:username="${jdbc.connection.username}" p:password="123"/>
 
   <!--<context:component-scan base-package="ma.persistence"/>-->
 

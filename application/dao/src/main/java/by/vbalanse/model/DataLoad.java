@@ -21,7 +21,7 @@ import by.vbalanse.model.template.EmailTemplateEntity;
 import by.vbalanse.model.user.RoleEntity;
 import by.vbalanse.model.user.RoleTypeEnum;
 import by.vbalanse.model.user.UserEntity;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.EntityManager;
 import java.sql.DriverManager;
@@ -61,7 +61,7 @@ public class DataLoad extends AbstractDataLoad {
     try {
       connection = DriverManager.getConnection(
           "jdbc:mysql://localhost:3306",
-          "root", "root"
+          "root", ""
       );
       java.sql.Statement st = connection.createStatement();
       st.executeUpdate("DROP DATABASE vbalanse");
@@ -301,14 +301,14 @@ public class DataLoad extends AbstractDataLoad {
       }
       entityManager.persist(roleEntity);
     }
-    Md5PasswordEncoder md5PasswordEncoder = new Md5PasswordEncoder();
+    BCryptPasswordEncoder md5PasswordEncoder = new BCryptPasswordEncoder();
     UserEntity userEntity = new UserEntity();
     userEntity.setRole(psichologistRole);
     userEntity.setFirstName(firstName);
     userEntity.setLastName(lastName);
     userEntity.setEmail(email);
     userEntity.setConfirmed(true);
-    userEntity.setPasswordMD5hash(md5PasswordEncoder.encodePassword("11111", null));
+    userEntity.setPasswordMD5hash(md5PasswordEncoder.encode("11111"));
     entityManager.persist(userEntity);
     if (roleCode.equals(RoleTypeEnum.ROLE_PSYCHOLOGIST)) {
       createPsychologist(userEntity);

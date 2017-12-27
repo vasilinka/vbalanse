@@ -41,21 +41,20 @@
     <google-guice.version>2.0</google-guice.version>
     <google-guava.version>13.0.1</google-guava.version>
     <google-protobuf.version>2.3.0</google-protobuf.version>
-    <spring.version>3.2.4.RELEASE</spring.version>
+    <spring.version>5.0.2.RELEASE</spring.version>
     <aspectj.version>1.7.3</aspectj.version>
     <!--<spring.version>3.2.4.RELEASE</spring.version>-->
-    <quartz.version>1.6.1</quartz.version>
+    <quartz.version>2.2.3</quartz.version>
     <jsslutils.version>1.0.7</jsslutils.version>
     <htmlcleaner.version>2.2</htmlcleaner.version>
-    <hibernate-ehcache.version>4.2.7.Final</hibernate-ehcache.version>
+    <hibernate-ehcache.version>5.2.12.Final</hibernate-ehcache.version>
     <!--<hibernate-ehcache.version>4.2.0.Final</hibernate-ehcache.version>-->
     <commons-httpclient.version>3.1</commons-httpclient.version>
     <jdom.version>1.1</jdom.version>
     <xerces.version>2.4.0</xerces.version>
-    <spring-security.version>3.1.4.RELEASE</spring-security.version>
-    <hibernate-core.version>4.2.7.Final</hibernate-core.version>
-    <hibernate-annotations.version>3.5.6-Final</hibernate-annotations.version>
-    <hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
+    <spring-security.version>5.0.0.RELEASE</spring-security.version>
+    <hibernate-core.version>5.2.12.Final</hibernate-core.version>
+    <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
     <jersey.version>1.18.1</jersey.version>
     <commons.fileupload.version>1.2.2</commons.fileupload.version>
 <!--
@@ -74,7 +73,7 @@
     <commons-lang.version>2.5</commons-lang.version>
     <commons-logging.version>1.1.1</commons-logging.version>
     <javax-persistence-api.version>1.0</javax-persistence-api.version>
-    <javax-validation-api.version>1.1.0.Final</javax-validation-api.version>
+    <javax-validation-api.version>2.0.1.Final</javax-validation-api.version>
     <javax-annotations-api.version>1.0</javax-annotations-api.version>
     <javax-servlet-api.version>2.5</javax-servlet-api.version>
     <javax-mail.version>1.4</javax-mail.version>
@@ -103,7 +102,7 @@
     <gwt-widgets-server.version>0.1.4</gwt-widgets-server.version>
     <oval.version>1.30</oval.version>
 <!--    <jackson.version>2.3</jackson.version>-->
-    <jackson.core.version>2.5.0</jackson.core.version>
+    <jackson.core.version>2.9.3</jackson.core.version>
     <imageinfo.properties>1.7</imageinfo.properties>
   </properties>
   <dependencyManagement>
@@ -115,9 +114,9 @@
       </dependency>
       <!--csv library-->
       <dependency>
-        <groupId>net.sf.ehcache</groupId>
+        <groupId>org.ehcache</groupId>
         <artifactId>ehcache</artifactId>
-        <version>2.7.4</version>
+        <version>3.4.0</version>
       </dependency>
       <dependency>
         <groupId>com.sun.jersey.contribs</groupId>
@@ -271,8 +270,13 @@
       </dependency>
       <!-- 3rd party - Quartz -->
       <dependency>
-        <groupId>org.opensymphony.quartz</groupId>
+        <groupId>org.quartz-scheduler</groupId>
         <artifactId>quartz</artifactId>
+        <version>${quartz.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.quartz-scheduler</groupId>
+        <artifactId>quartz-jobs</artifactId>
         <version>${quartz.version}</version>
       </dependency>
       <!-- 3rd party - Jssutils-->
@@ -450,6 +454,11 @@
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-web</artifactId>
+        <version>${spring.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
         <version>${spring.version}</version>
       </dependency>
       <dependency>
@@ -781,8 +790,8 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.1</version>
           <configuration>
-            <source>1.7</source>
-            <target>1.7</target>
+            <source>1.8</source>
+            <target>1.8</target>
           </configuration>
         </plugin>
         <plugin>

@@ -24,10 +24,10 @@
     <property name="concurrent" value="false"/>
   </bean>
 
-  <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+  <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
     <property name="jobDetail" ref="jobDetail"/>
     <!-- starts in 60 seconds after spring context initialization -->
-    <property name="startDelay" value="10000"/>
+    <!--<property name="startTime" value="10000"/>-->
     <!-- repeat every 10 minutes -->
     <property name="repeatInterval" value="120000"/>
   </bean>
