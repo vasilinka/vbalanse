@@ -24,7 +24,7 @@
   </persistence-unit>
 -->
     <persistence-unit name="vbalansePU" transaction-type="RESOURCE_LOCAL">
-      <provider>org.hibernate.ejb.HibernatePersistence</provider>
+      <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
       <class>by.vbalanse.model.article.ArticleEntity</class>
       <class>by.vbalanse.model.article.ArticleCategoryEntity</class>
       <class>by.vbalanse.model.article.TargetAuditoryEntity</class>

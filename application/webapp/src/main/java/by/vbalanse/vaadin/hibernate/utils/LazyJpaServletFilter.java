@@ -26,13 +26,13 @@ public class LazyJpaServletFilter implements Filter {
                          FilterChain filterChain) throws IOException, ServletException {
         try {
             // Create and set the entity manager
-            LazyJpaEntityManagerProvider.setCurrentEntityManager(entityManagerFactory.createEntityManager());
+            //LazyJpaEntityManagerProvider.setCurrentEntityManager(entityManagerFactory.createEntityManager());
 
             // Handle the request
             filterChain.doFilter(servletRequest, servletResponse);
         } finally {
             // Reset the entity manager
-            LazyJpaEntityManagerProvider.setCurrentEntityManager(null);
+           //LazyJpaEntityManagerProvider.setCurrentEntityManager(null);
         }
     }
 
