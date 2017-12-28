@@ -24,6 +24,7 @@ import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.data.Container;
 import com.vaadin.data.util.filter.Like;
 import com.vaadin.data.util.filter.Or;
+import net.sf.ehcache.CacheManager;
 import org.springframework.context.annotation.Scope;
 
 @org.springframework.stereotype.Component(value = "articleListView")
@@ -32,6 +33,7 @@ public class ArticleListView extends AbstractListView<ArticleEntity, ArticleEnti
 
   @Override
   public JPAContainer<ArticleEntity> getContainer() {
+    CacheManager.getInstance().shutdown();
     return JPAContainerFactory.make(ArticleEntity.class,
         AdminUI.PERSISTENCE_UNIT);
   }

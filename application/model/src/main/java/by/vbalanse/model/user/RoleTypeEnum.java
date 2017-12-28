@@ -45,7 +45,7 @@ public enum RoleTypeEnum {
   }
 
   public static class Constants {
-    public static final String ROLE_ADMINISTATOR_CODE = "A";
+    public static final String ROLE_ADMINISTATOR_CODE = "ROLE_A";
     public static final String ROLE_PSYCHOLOGIST_CODE = "P";
     public static final String ROLE_REGISTERED_USER_CODE = "RU";
   }

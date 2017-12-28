@@ -65,7 +65,7 @@ public class AdminView extends CssLayout implements ComponentContainer {
   private HorizontalSplitPanel centralSplitPanel;
 
   public AdminView() {
-    //buildMainArea();
+    buildMainArea();
   }
 
 //  public static AdminView getInstance() {
@@ -75,7 +75,6 @@ public class AdminView extends CssLayout implements ComponentContainer {
 //    return portalView;
 //  }
 
-  @PostConstruct
   private void buildMainArea() {
 //    VerticalLayout menu = new VerticalLayout();
 //    menu.addStyleName("vertical-menu");
