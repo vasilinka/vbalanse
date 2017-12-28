@@ -61,7 +61,7 @@ public class DataLoad extends AbstractDataLoad {
     try {
       connection = DriverManager.getConnection(
           "jdbc:mysql://localhost:3306",
-          "root", ""
+          "root", "root"
       );
       java.sql.Statement st = connection.createStatement();
       st.executeUpdate("DROP DATABASE vbalanse");
