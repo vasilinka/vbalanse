@@ -49,7 +49,7 @@ public class PortalView extends CssLayout {
   public PortalView() {
 
     SpringContextHelper springContextHelper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
-    SessionFactory sessionFactory = (SessionFactory) springContextHelper.getBean("sessionFactory");
+    //SessionFactory sessionFactory = (SessionFactory) springContextHelper.getBean("sessionFactory");
     categoriesContainerJpa = new HierarchicalArticleCategoryContainer(ArticleCategoryEntity.class);
     cityContainer = JPAContainerFactory.make(CityEntity.class, AdminUI.PERSISTENCE_UNIT);
     trainingContainer = JPAContainerFactory.make(TrainingEntity.class, AdminUI.PERSISTENCE_UNIT);

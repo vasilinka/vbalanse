@@ -5,6 +5,7 @@ import by.vbalanse.vaadin.AdminUI;
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.addon.jpacontainer.provider.CachingMutableLocalEntityProvider;
+import net.sf.ehcache.CacheManager;
 
 /**
  * writeme: Should be the description of the class
@@ -23,6 +24,7 @@ public class HierarchicalArticleCategoryContainer extends JPAContainer<ArticleCa
    */
   public HierarchicalArticleCategoryContainer(Class<ArticleCategoryEntity> entityClass) {
     super(entityClass);
+    CacheManager.getInstance().shutdown();
     setEntityProvider(new CachingMutableLocalEntityProvider<ArticleCategoryEntity>(ArticleCategoryEntity.class, JPAContainerFactory.createEntityManagerForPersistenceUnit(AdminUI.PERSISTENCE_UNIT)));
     setParentProperty("category");
   }
