@@ -223,7 +223,7 @@ public class UserFacadeImpl implements UserFacade {
         + request.getServerName()
         + ":"
         + request.getServerPort()
-        + "/index.html#/changePassword?" + CHANGE_PASSWORD_LINK_PARAMETER + "=" + md5CodeUser;
+        + "/index.html#!/changePassword?" + CHANGE_PASSWORD_LINK_PARAMETER + "=" + md5CodeUser;
     replaces.put(DataLoad.EMAIL_CHANGE_LINK, url);
     for (String replaceFrom : replaces.keySet()) {
       content = content.replace("[[" + replaceFrom + "]]", replaces.get(replaceFrom));

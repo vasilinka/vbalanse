@@ -45,9 +45,9 @@
        aria-expanded="false">{{user.name}}
       <span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="#/profile">Профиль</a></li>
-      <li><a href="#">Мои статьи</a></li>
-      <li><a href="#">Мои сообщения</a></li>
+      <li><a href="#!/profile">Профиль</a></li>
+      <li><a href="#!">Мои статьи</a></li>
+      <li><a href="#!">Мои сообщения</a></li>
       <li class="divider"></li>
       <li><a href="j_spring_security_logout">Выйти</a></li>
     </ul>
@@ -59,7 +59,7 @@
       <span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
       <li><a href="auth.html">"Логин"</a></li>
-      <li><a href="auth.html#/register">Регистрация</a></li>
+      <li><a href="auth.html#!/register">Регистрация</a></li>
     </ul>
   </li>
 </ul><div id="login-box">

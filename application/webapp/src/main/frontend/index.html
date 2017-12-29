@@ -163,6 +163,7 @@
 <script src="../bower_components/ui-select/src/select3.js"></script>
 <script src="../bower_components/magnific-popup/dist/jquery.magnific-popup.js"></script>
 <script src="../bower_components/desandro-matches-selector/matches-selector.js"></script>
+<script src="../bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 <script src="../bower_components/jquery-autogrow/lib/jquery-autogrow.js"></script>
@@ -251,9 +252,9 @@
                         <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-expanded="false">{{user.name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#/profile">Профиль</a></li>
-                            <li><a href="#/articleList">Мои статьи</a></li>
-                            <li><a href="#">Мои сообщения</a></li>
+                            <li><a href="#!/profile">Профиль</a></li>
+                            <li><a href="#!/articleList">Мои статьи</a></li>
+                            <li><a href="#!">Мои сообщения</a></li>
                             <li class="divider"></li>
                             <li><a href="j_spring_security_logout">Выйти</a></li>
                         </ul>
@@ -265,12 +266,12 @@
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="auth.html">Логин</a></li>
-                            <li><a href="auth.html#/register">Регистрация</a></li>
+                            <li><a href="auth.html#!/register">Регистрация</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" ng-show="authenticated">
-                    <li class="personal-room-link"><a href="#/article"><!--<i style="margin-right: 5px;" class="glyphicon glyphicon-pencil"></i>-->Личный кабинет</a></li>{{tags1}}
+                    <li class="personal-room-link"><a href="#!/article"><!--<i style="margin-right: 5px;" class="glyphicon glyphicon-pencil"></i>-->Личный кабинет</a></li>{{tags1}}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

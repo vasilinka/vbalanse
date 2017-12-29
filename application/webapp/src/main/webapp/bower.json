@@ -51,7 +51,8 @@
     "blueimp-load-image": "latest",
     "matches-selector": "latest",
     "eventie": "latest",
-    "doc-ready": "latest"
+    "doc-ready": "latest",
+    "angular-toArrayFilter": "latest"
   },
   "overrides": {
     "masonry": {

@@ -101,9 +101,9 @@
     <security:intercept-url pattern="/**" access="permitAll"/>
     <security:custom-filter ref="authenticationFilter" before="BASIC_AUTH_FILTER"/>
 
-    <security:form-login login-page="/index.html#/login" authentication-failure-url="/index.html#/login?error=true"/>
+    <security:form-login login-page="/index.html#!/login" authentication-failure-url="/index.html#!/login?error=true"/>
     <security:logout invalidate-session="true" delete-cookies="true" logout-success-url="/"/>
-    <security:form-login login-page="/index.html#/login" authentication-failure-url="/index.html#/login?error=true"/>
+    <security:form-login login-page="/index.html#!/login" authentication-failure-url="/index.html#!/login?error=true"/>
     <security:intercept-url pattern="/**" access="permitAll"/>
     <security:csrf disabled="true"/>
 

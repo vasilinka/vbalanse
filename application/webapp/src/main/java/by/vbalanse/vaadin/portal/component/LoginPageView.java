@@ -140,9 +140,9 @@ public class LoginPageView extends CustomComponent implements Button.ClickListen
         GrantedAuthority next = authorities.iterator().next();
         if (next.getAuthority().equals("P")) {
           //break;
-          getUI().getPage().setLocation("/#/article");
+          getUI().getPage().setLocation("/#!/article");
           break;
-        } else if (next.getAuthority().equals("A")) {
+        } else if (next.getAuthority().equals("ROLE_A")) {
           getUI().getPage().setLocation("/admin");
           break;
         }
