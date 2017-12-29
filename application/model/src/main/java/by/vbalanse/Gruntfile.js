@@ -108,7 +108,7 @@ module.exports = function(grunt) {
             msWaitForPages: 1000,
             urls: [
               '',
-              '#/article'
+              '#!/article'
             ]
           }
         }

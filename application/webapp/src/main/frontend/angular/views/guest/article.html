@@ -19,7 +19,7 @@
       <div class="article-date">Опубликована {{article.date}} | <i class="fontelloicon fontelloicon-user"></i> Автор <a
           href="/#author"><i><span ng-if="toBoolean(article.author.firstName)">{{article.author.firstName}} {{article.author.lastName}}</span></i><span
           ng-if="!toBoolean(article.author.firstName)">{{article.author.email}}</span></i></a></div>
-      <a class="article-title" href="#/articleGuest?id={{article.id}}">{{article.title}}</a></h4>
+      <a class="article-title" href="#!/articleGuest?id={{article.id}}">{{article.title}}</a></h4>
       <div class="tags" data-ng-show="toBoolean(article.tags)">
         <i style="margin-right: 5px;" class="glyphicon glyphicon-tags"></i>
 

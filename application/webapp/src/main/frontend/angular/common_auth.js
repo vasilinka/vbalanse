@@ -9,7 +9,7 @@ Auth = function ($rootScope, $cookieStore, UserService) {
     $rootScope.user = user;
     if (user.roles['ROLE_ANONYMOUS'] == true) {
       $rootScope.authenticated = false;
-    } else if (user.roles['RU']== true  || user.roles['P']== true|| user.roles['A']== true) {
+    } else if (user.roles['RU']== true  || user.roles['P']== true || user.roles['ROLE_A']== true) {
       $rootScope.authenticated = true;
     }
     //if (user.roles[])

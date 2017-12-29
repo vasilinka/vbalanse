@@ -28,13 +28,13 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="article in displayedCollection">
-                    <td><a ng-href="#/article?id={{article.id}}">{{article.title}}</a></td>
+                    <td><a ng-href="#!/article?id={{article.id}}">{{article.title}}</a></td>
                     <td>{{article.dateOfPublish | date:'MM/dd/yyyy'}}</td>
                     <td>
                         <button class="btn btn-sm" popover-placement="top" popover="{{row.email}}" type="button">
                             <i class="glyphicon glyphicon-edit"></i>
                         </button>
-                        <a ng-href="#/article?id={{article.id}}">Редактировать</a></td>
+                        <a ng-href="#!/article?id={{article.id}}">Редактировать</a></td>
                     <td>
                         <button type="button" ng-click="removeRow(article)" class="btn btn-sm btn-danger">
                             <i class="glyphicon glyphicon-remove-circle">

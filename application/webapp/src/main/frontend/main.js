@@ -1,7 +1,7 @@
 /**
  * Created by Василинка on 13.11.2014.
  */
-var module = angular.module('exampleApp', ['ngRoute', 'ngGrid', 'ngSanitize', 'smart-table', 'ui.select', 'ngCookies', 'ngTagsInput', 'exampleApp.services', 'ui.bootstrap', 'puElasticInput'/*, 'xeditable'*/])
+var module = angular.module('exampleApp', ['ngRoute', 'ngGrid', 'ngSanitize', 'smart-table', 'ui.select', 'ngCookies', 'ngTagsInput', 'exampleApp.services', 'ui.bootstrap', 'puElasticInput', 'angular-toArrayFilter'/*, 'xeditable'*/])
   .config(
   ['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
 

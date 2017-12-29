@@ -8,7 +8,7 @@
         <div class="article-date">Опубликована {{article.date}}&nbsp;&nbsp;  <i class="fontelloicon fontelloicon-user"></i> Автор <a
             href="/#author?userId={{article.author.id}}"><i><span ng-show="toBoolean(article.author.firstName)">{{article.author.firstName}} {{article.author.lastName}}</span></i><span
             ng-show="!toBoolean(article.author.firstName)">{{article.author.email}}</span></i></a></div>
-        <a class="article-title" href="#/articleGuest?id={{article.id}}">{{article.title}}</a></h4>
+        <a class="article-title" href="#!/articleGuest?id={{article.id}}">{{article.title}}</a></h4>
         <div class="tags" data-ng-show="toBoolean(article.tags)">
         <!--<div class="tags" data-ng-show="article.tags.length > 0">-->
           <i style="margin-right: 5px;" class="glyphicon glyphicon-tags"></i>
@@ -28,7 +28,7 @@
       </div>
       <div>
         <div class="ratings">
-          <a href="#/articleGuest?id={{article.id}}&comments=1" class="pull-right">Комментариев: {{article.countOfComments}}</a>
+          <a href="#!/articleGuest?id={{article.id}}&comments=1" class="pull-right">Комментариев: {{article.countOfComments}}</a>
 
           <p>
             <span class="glyphicon glyphicon-thumbs-up"></span><span class="numbers">1000</span>

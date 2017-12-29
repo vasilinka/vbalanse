@@ -45,8 +45,8 @@
     "typeahead.js" : "latest",
     "bootstrap-select": "latest",
     "ui-select": "latest",
-    "magnific-popup": "latest"
-
+    "magnific-popup": "latest",
+    "angular-toArrayFilter": "latest"
     
   },
   "overrides": {

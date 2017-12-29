@@ -11,7 +11,7 @@ ckEditorDirective = [function () {
       var isReady = false;
       var data = [];
       var ck = CKEDITOR.replace(elm[0], /*{customConfig: 'testconfig.js'}*/
-      {customConfig: 'testconfig.js'} );//'../../../../testconfig.js'
+      {customConfig: 'config.js'} );//'../../../../testconfig.js'
       /*{toolbar: [
         { name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },	// Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
         [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],			// Defines toolbar group without name.

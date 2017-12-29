@@ -134,7 +134,7 @@
           психолог</a></div>
         <div class="doc-schedule clearfix">
 
-            <div data-ng-repeat="(key, item) in psychologyCharacteristics.fields | orderBy:'+order'">
+            <div data-ng-repeat="(key, item) in psychologyCharacteristics.fields | toArray | orderBy:'+order'">
                 <p class="doc-info"><strong>{{item.title}}</strong></p>
                 <p><span><a href="#" psy class-name="PropertyForListKeyValueEntity" field-name="{{key}}" el-id="$item.id" class="username">{{item.value}}</a></span></p>
             </div>
