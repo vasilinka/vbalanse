@@ -20,6 +20,7 @@ import by.vbalanse.model.article.ArticleEntity;
 import by.vbalanse.model.article.TargetAuditoryEntity;
 import by.vbalanse.vaadin.AdminUI;
 import by.vbalanse.vaadin.component.AbstractEntityEditor;
+import by.vbalanse.vaadin.hibernate.utils.SpringContextHelper;
 import com.vaadin.addon.jpacontainer.EntityItem;
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
@@ -28,8 +29,10 @@ import com.vaadin.addon.jpacontainer.fieldfactory.FieldFactory;
 import com.vaadin.data.Item;
 import com.vaadin.data.validator.BeanValidator;
 import com.vaadin.event.Action;
+import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 
+import javax.persistence.EntityManagerFactory;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -41,6 +44,7 @@ public class ArticleEntityEditor extends AbstractEntityEditor<ArticleEntity> imp
   public static final Action ACTION_DELETE = new Action("Delete");
   private static final Action[] ACTIONS = new Action[]{ACTION_ADD,
       ACTION_DELETE};
+  SpringContextHelper helper;
 
 
   Tree tree;
@@ -57,8 +61,9 @@ public class ArticleEntityEditor extends AbstractEntityEditor<ArticleEntity> imp
 
   @Override
   protected JPAContainer<ArticleEntity> createEntityContainer() {
+    SpringContextHelper helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
     return JPAContainerFactory.make(ArticleEntity.class,
-        AdminUI.PERSISTENCE_UNIT);
+            ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
   }
 
   @Override
@@ -119,7 +124,7 @@ public class ArticleEntityEditor extends AbstractEntityEditor<ArticleEntity> imp
         public void windowClose(Window.CloseEvent e) {
           ArticleCategoryEntity articleCategoryEntity = new ArticleCategoryEntity();
           articleCategoryEntity.setTitle(categoryNameComponent.getValue());
-          JPAContainer<ArticleCategoryEntity> articleCategoriesContainer = JPAContainerFactory.make(ArticleCategoryEntity.class, AdminUI.PERSISTENCE_UNIT);
+          JPAContainer<ArticleCategoryEntity> articleCategoriesContainer = JPAContainerFactory.make(ArticleCategoryEntity.class, ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
           Item item1 = tree.getItem(target);
           articleCategoryEntity.setCategory(((JPAContainerItem<ArticleCategoryEntity>) item1).getEntity());
           articleCategoriesContainer.addEntity(articleCategoryEntity);

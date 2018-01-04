@@ -45,6 +45,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import org.hibernate.SessionFactory;
 
+import javax.persistence.EntityManagerFactory;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -64,8 +65,9 @@ public class TrainingEntityEditor extends VerticalLayoutCaption implements
   FormLayout formLayout = new FormLayout();
 
   public TrainingEntityEditor(EntityItem<TrainingEntity> trainingItem) {
-    cityContainer = JPAContainerFactory.make(CityEntity.class, AdminUI.PERSISTENCE_UNIT);
-    psychologistContainer = JPAContainerFactory.make(PsychologistEntity.class, AdminUI.PERSISTENCE_UNIT);
+    SpringContextHelper helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
+    cityContainer = JPAContainerFactory.make(CityEntity.class, ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
+    psychologistContainer = JPAContainerFactory.make(PsychologistEntity.class, ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
 
     this.trainingEntityEntityItem = trainingItem;
     editorFieldGroup = new FieldGroup();

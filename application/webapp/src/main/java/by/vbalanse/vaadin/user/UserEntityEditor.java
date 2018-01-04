@@ -20,15 +20,18 @@ import by.vbalanse.model.user.RoleEntity;
 import by.vbalanse.model.user.UserEntity;
 import by.vbalanse.vaadin.AdminUI;
 import by.vbalanse.vaadin.component.AbstractEntityEditor;
+import by.vbalanse.vaadin.hibernate.utils.SpringContextHelper;
 import com.vaadin.addon.jpacontainer.EntityItem;
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.data.Item;
 import com.vaadin.data.Property;
 import com.vaadin.data.validator.BeanValidator;
+import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.*;
 
+import javax.persistence.EntityManagerFactory;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
@@ -51,8 +54,9 @@ public class UserEntityEditor extends AbstractEntityEditor<UserEntity> {
 
   @Override
   protected JPAContainer<UserEntity> createEntityContainer() {
+    SpringContextHelper helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
     return JPAContainerFactory.make(UserEntity.class,
-        AdminUI.PERSISTENCE_UNIT);
+            ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
   }
 
   /**

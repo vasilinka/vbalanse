@@ -18,6 +18,7 @@ package by.vbalanse.vaadin.template;
 import by.vbalanse.model.template.EmailTemplateEntity;
 import by.vbalanse.vaadin.AdminUI;
 import by.vbalanse.vaadin.AdminView;
+import by.vbalanse.vaadin.hibernate.utils.SpringContextHelper;
 import by.vbalanse.vaadin.user.psychologist.PsychologistEntityEditor;
 import com.vaadin.addon.jpacontainer.EntityItem;
 import com.vaadin.addon.jpacontainer.JPAContainer;
@@ -30,9 +31,12 @@ import com.vaadin.event.FieldEvents.TextChangeEvent;
 import com.vaadin.event.FieldEvents.TextChangeListener;
 import com.vaadin.event.ItemClickEvent;
 import com.vaadin.event.ItemClickEvent.ItemClickListener;
+import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import org.springframework.context.annotation.Scope;
+
+import javax.persistence.EntityManagerFactory;
 
 @org.springframework.stereotype.Component(value = "emailListView")
 @Scope(value = "prototype")
@@ -54,8 +58,9 @@ public class EmailListView extends VerticalLayout implements
   private String textFilter;
 
   public EmailListView() {
+    SpringContextHelper helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
     emailTemplateContainer = JPAContainerFactory.make(EmailTemplateEntity.class,
-        AdminUI.PERSISTENCE_UNIT);
+            ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
     buildMainArea();
 
   }

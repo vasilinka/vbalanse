@@ -17,25 +17,35 @@ package by.vbalanse.vaadin.article;
 
 import by.vbalanse.model.article.ArticleEntity;
 import by.vbalanse.vaadin.AdminUI;
+import by.vbalanse.vaadin.AdminView;
 import by.vbalanse.vaadin.component.AbstractListView;
+import by.vbalanse.vaadin.hibernate.utils.SpringContextHelper;
 import com.vaadin.addon.jpacontainer.EntityItem;
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.data.Container;
 import com.vaadin.data.util.filter.Like;
 import com.vaadin.data.util.filter.Or;
+import com.vaadin.server.VaadinServlet;
 import net.sf.ehcache.CacheManager;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+
+import javax.persistence.EntityManagerFactory;
 
 @org.springframework.stereotype.Component(value = "articleListView")
 @Scope(value = "prototype")
 public class ArticleListView extends AbstractListView<ArticleEntity, ArticleEntityEditor> {
 
+  @Autowired
+  EntityManagerFactory entityManagerFactory;
+
   @Override
   public JPAContainer<ArticleEntity> getContainer() {
-    CacheManager.getInstance().shutdown();
-    return JPAContainerFactory.make(ArticleEntity.class,
-        AdminUI.PERSISTENCE_UNIT);
+    //CacheManager.getInstance().shutdown();
+    SpringContextHelper springContextHelper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
+    EntityManagerFactory entityManagerFactory = (EntityManagerFactory) springContextHelper.getBean("entityManagerFactory");
+    return JPAContainerFactory.make(ArticleEntity.class, entityManagerFactory.createEntityManager());
   }
 
   @Override

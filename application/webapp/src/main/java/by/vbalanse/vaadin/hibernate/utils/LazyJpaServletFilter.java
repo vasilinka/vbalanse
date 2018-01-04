@@ -18,7 +18,7 @@ public class LazyJpaServletFilter implements Filter {
     private EntityManagerFactory entityManagerFactory;
 
     public void init(FilterConfig filterConfig) throws ServletException {
-        CacheManager.getInstance().shutdown();
+        //CacheManager.getInstance().shutdown();
         entityManagerFactory = Persistence
                 .createEntityManagerFactory(AdminUI.PERSISTENCE_UNIT);
     }

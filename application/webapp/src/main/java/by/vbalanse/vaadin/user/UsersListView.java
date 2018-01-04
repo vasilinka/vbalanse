@@ -28,6 +28,7 @@ import by.vbalanse.vaadin.user.psychologist.PsychologistEntityEditor;
 import com.vaadin.addon.jpacontainer.EntityItem;
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
+import com.vaadin.addon.jpacontainer.JPAContainerItem;
 import com.vaadin.data.Container;
 import com.vaadin.data.Property;
 import com.vaadin.data.Property.ValueChangeEvent;
@@ -37,6 +38,8 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button.ClickEvent;
 import org.springframework.context.annotation.Scope;
+
+import javax.persistence.EntityManagerFactory;
 
 @org.springframework.stereotype.Component(value = "usersListView")
 @Scope("prototype")
@@ -49,7 +52,7 @@ public class UsersListView extends AbstractListView<UserEntity, UserEntityEditor
   public UsersListView() {
     super();
     psychologistContainer = JPAContainerFactory.make(PsychologistEntity.class,
-        AdminUI.PERSISTENCE_UNIT);
+            ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
     addAttachListener(new AttachListener() {
       public void attach(AttachEvent event) {
         helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
@@ -62,8 +65,9 @@ public class UsersListView extends AbstractListView<UserEntity, UserEntityEditor
 
   @Override
   public JPAContainer<UserEntity> getContainer() {
+    helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
     return JPAContainerFactory.make(UserEntity.class,
-        AdminUI.PERSISTENCE_UNIT);
+            ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
   }
 
   private void initPsychologyButton() {
@@ -112,9 +116,9 @@ public class UsersListView extends AbstractListView<UserEntity, UserEntityEditor
   @Override
   protected UserEntityEditor getEntityEditor(EntityItem<UserEntity> entity) {
     UserEntityEditor personEditor = new UserEntityEditor(entity);
-    personEditor.addListener(new AbstractEntityEditor.EditorSavedListener<UserEntity>() {
-      public void editorSaved(AbstractEntityEditor.EditorSavedEvent<UserEntity> event) {
-        UserEntity bean = event.getSavedItem();
+    personEditor.addListener(new AbstractEntityEditor.EditorSavedListener<JPAContainerItem<UserEntity>>() {
+      public void editorSaved(AbstractEntityEditor.EditorSavedEvent<JPAContainerItem<UserEntity>> event) {
+        UserEntity bean = event.getSavedItem().getEntity();
         String password = bean.getPasswordMD5hash();
         bean.setPasswordMD5hash(StringUtils.md5(password));
         container.addEntity(bean);

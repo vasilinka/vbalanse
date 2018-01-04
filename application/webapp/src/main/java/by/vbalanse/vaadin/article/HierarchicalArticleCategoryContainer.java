@@ -2,10 +2,14 @@ package by.vbalanse.vaadin.article;
 
 import by.vbalanse.model.article.ArticleCategoryEntity;
 import by.vbalanse.vaadin.AdminUI;
+import by.vbalanse.vaadin.hibernate.utils.SpringContextHelper;
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.addon.jpacontainer.provider.CachingMutableLocalEntityProvider;
+import com.vaadin.server.VaadinServlet;
 import net.sf.ehcache.CacheManager;
+
+import javax.persistence.EntityManagerFactory;
 
 /**
  * writeme: Should be the description of the class
@@ -24,8 +28,10 @@ public class HierarchicalArticleCategoryContainer extends JPAContainer<ArticleCa
    */
   public HierarchicalArticleCategoryContainer(Class<ArticleCategoryEntity> entityClass) {
     super(entityClass);
-    CacheManager.getInstance().shutdown();
-    setEntityProvider(new CachingMutableLocalEntityProvider<ArticleCategoryEntity>(ArticleCategoryEntity.class, JPAContainerFactory.createEntityManagerForPersistenceUnit(AdminUI.PERSISTENCE_UNIT)));
+    //CacheManager.getInstance().shutdown();
+    SpringContextHelper springContextHelper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
+    EntityManagerFactory entityManagerFactory = (EntityManagerFactory) springContextHelper.getBean("entityManagerFactory");
+    setEntityProvider(new CachingMutableLocalEntityProvider<ArticleCategoryEntity>(ArticleCategoryEntity.class, entityManagerFactory.createEntityManager()));
     setParentProperty("category");
   }
 

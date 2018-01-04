@@ -22,6 +22,7 @@ import com.vaadin.ui.*;
 import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManagerFactory;
 
 /**
  * writeme: Should be the description of the class
@@ -162,7 +163,7 @@ public class CategoryEditorComponent extends CustomComponent implements Action.H
         public void windowClose(Window.CloseEvent e) {
           ArticleCategoryEntity articleCategoryEntity = new ArticleCategoryEntity();
           articleCategoryEntity.setTitle(categoryNameComponent.getValue());
-          JPAContainer<ArticleCategoryEntity> articleCategoriesContainer = JPAContainerFactory.make(ArticleCategoryEntity.class, AdminUI.PERSISTENCE_UNIT);
+          JPAContainer<ArticleCategoryEntity> articleCategoriesContainer = JPAContainerFactory.make(ArticleCategoryEntity.class, ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
           Item item1 = tree.getItem(target);
           articleCategoryEntity.setCategory(((JPAContainerItem<ArticleCategoryEntity>) item1).getEntity());
           articleCategoriesContainer.addEntity(articleCategoryEntity);

@@ -17,14 +17,18 @@ package by.vbalanse.vaadin.user;
 
 import by.vbalanse.model.user.RoleEntity;
 import by.vbalanse.vaadin.AdminUI;
+import by.vbalanse.vaadin.hibernate.utils.SpringContextHelper;
 import com.vaadin.addon.jpacontainer.JPAContainer;
 import com.vaadin.addon.jpacontainer.JPAContainerFactory;
 import com.vaadin.data.Property;
 import com.vaadin.data.util.converter.Converter;
+import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.CustomField;
+
+import javax.persistence.EntityManagerFactory;
 
 /**
  * A custom field that allows selection of a role.
@@ -36,8 +40,9 @@ public class RoleSelector extends CustomField<RoleEntity> {
   private JPAContainer<RoleEntity> container;
 
   public RoleSelector() {
+    SpringContextHelper helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
     container = JPAContainerFactory.make(RoleEntity.class,
-        AdminUI.PERSISTENCE_UNIT);
+            ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
     setCaption("Role");
     // Only list "roots" which are in our example geographical super
     // roles

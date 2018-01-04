@@ -29,6 +29,7 @@
     <!--Selects persistence unit -->
     <property name="persistenceUnitName" value="vbalansePU"/>
     <property name="dataSource" ref="dataSource2"/>
+    <property name="packagesToScan" value="by.vbalanse.model"/>
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="showSql" value="true"/>

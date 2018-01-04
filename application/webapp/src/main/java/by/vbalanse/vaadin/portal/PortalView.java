@@ -24,6 +24,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import javax.persistence.EntityManagerFactory;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -51,8 +52,9 @@ public class PortalView extends CssLayout {
     SpringContextHelper springContextHelper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
     //SessionFactory sessionFactory = (SessionFactory) springContextHelper.getBean("sessionFactory");
     categoriesContainerJpa = new HierarchicalArticleCategoryContainer(ArticleCategoryEntity.class);
-    cityContainer = JPAContainerFactory.make(CityEntity.class, AdminUI.PERSISTENCE_UNIT);
-    trainingContainer = JPAContainerFactory.make(TrainingEntity.class, AdminUI.PERSISTENCE_UNIT);
+    SpringContextHelper helper = new SpringContextHelper(VaadinServlet.getCurrent().getServletContext());
+    cityContainer = JPAContainerFactory.make(CityEntity.class, ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
+    trainingContainer = JPAContainerFactory.make(TrainingEntity.class, ((EntityManagerFactory) helper.getBean("entityManagerFactory")).createEntityManager());
     buildMainArea();
 
   }
