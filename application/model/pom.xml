@@ -137,7 +137,7 @@
             </goals>
             <phase>generate-sources</phase>
             <configuration>
-              &lt;!&ndash;<compilerArguments>-Aeclipselink.persistencexml=src/main/resources/META-INF/persistence.xml</compilerArguments>&ndash;&gt;
+              &lt;!&ndash;<compilerArguments>-Aeclipselink.persistencexml=src/main/resources/META-INF/persistence.xml_</compilerArguments>&ndash;&gt;
               <processors>
                 <processor>org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor</processor>
               </processors>
