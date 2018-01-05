@@ -65,7 +65,7 @@ public class DataLoad extends AbstractDataLoad {
       );
       java.sql.Statement st = connection.createStatement();
       st.executeUpdate("DROP DATABASE vbalanse");
-      st.execute("CREATE DATABASE vbalanse");
+      st.execute("CREATE DATABASE vbalanse CHARACTER SET utf8 COLLATE utf8_general_ci;");
       st.close();
     } catch (SQLException e) {
       e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
